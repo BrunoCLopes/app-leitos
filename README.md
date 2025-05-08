@@ -11,15 +11,18 @@ Este sistema tem como objetivo auxiliar na gestão dos leitos hospitalares. A ap
 ## 📦 Instalação
   É necessário instalar o Node.js para executar o projeto
 
-1. Clone o repositório
+**1. Clone o repositório**
 ```bash
    git clone https://github.com/BrunoCLopes/App-Leitos.git
    cd App-Leitos
+```
 
-2. Instale as dependências
+**2. Instale as dependências**
 ```bash
    npm install
+```
 
-3. Inicie o servidor
+**3. Inicie o servidor**
 ```bash
    npm run dev
+```
