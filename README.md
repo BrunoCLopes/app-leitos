@@ -13,16 +13,16 @@ Este sistema tem como objetivo auxiliar na gestão dos leitos hospitalares. A ap
 
 **1. Clone o repositório**
 ```bash
-   git clone https://github.com/BrunoCLopes/App-Leitos.git
-   cd App-Leitos
+git clone https://github.com/BrunoCLopes/App-Leitos.git
+cd App-Leitos
 ```
 
 **2. Instale as dependências**
 ```bash
-   npm install
+npm install
 ```
 
 **3. Inicie o servidor**
 ```bash
-   npm run dev
+npm run dev
 ```
