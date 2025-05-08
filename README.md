@@ -14,7 +14,6 @@ Este sistema tem como objetivo auxiliar na gestão dos leitos hospitalares. A ap
 **1. Clone o repositório**
 ```bash
 git clone https://github.com/BrunoCLopes/app-leitos.git
-cd app-leitos
 ```
 
 **2. Instale as dependências**
