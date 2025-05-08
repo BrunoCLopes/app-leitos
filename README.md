@@ -13,7 +13,7 @@ Este sistema tem como objetivo auxiliar na gestão dos leitos hospitalares. A ap
 
 **1. Clone o repositório**
 ```bash
-git clone https://github.com/BrunoCLopes/App-Leitos.git
+https://github.com/BrunoCLopes/app-leitos.git
 cd App-Leitos
 ```
 
