@@ -12,8 +12,6 @@ const {
     await sequelize.authenticate();
     console.log("Conexão com o banco de dados estabelecida!");
 
-    await sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
-
     await Employee.destroy({ where: {} });
     await Bed.destroy({ where: {} });
     await Role.destroy({ where: {} });
@@ -21,53 +19,39 @@ const {
     await Speciality.destroy({ where: {} });
     console.log("Tabelas limpas!");
 
-    await sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
-
-    const roles = await Role.bulkCreate(
-      [
-        { name: "Médico" },
-        { name: "Enfermeiro" },
-        { name: "Técnico de Enfermagem" },
-        { name: "Administrador" },
-        { name: "Recepcionista" },
-      ],
-      { returning: true }
-    );
+    const roles = await Role.bulkCreate([
+      { name: "Médico" },
+      { name: "Enfermeiro" },
+      { name: "Técnico de Enfermagem" },
+      { name: "Administrador" },
+      { name: "Recepcionista" },
+    ]);
     console.log("Tabela Role populada!");
 
-    const situations = await Situation.bulkCreate(
-      [
-        { name: "Em plantão" },
-        { name: "Intervalo" },
-        { name: "Fora de Serviço" },
-      ],
-      { returning: true }
-    );
+    const situations = await Situation.bulkCreate([
+      { name: "Em plantão" },
+      { name: "Intervalo" },
+      { name: "Fora de Serviço" },
+    ]);
     console.log("Tabela Situation populada!");
 
-    const specialities = await Speciality.bulkCreate(
-      [
-        { name: "Cardiologia" },
-        { name: "Neurologia" },
-        { name: "Pediatria" },
-        { name: "UTI" },
-        { name: "Ortopedia" },
-        { name: "Dermatologia" },
-      ],
-      { returning: true }
-    );
+    const specialities = await Speciality.bulkCreate([
+      { name: "Cardiologia" },
+      { name: "Neurologia" },
+      { name: "Pediatria" },
+      { name: "UTI" },
+      { name: "Ortopedia" },
+      { name: "Dermatologia" },
+    ]);
     console.log("Tabela Speciality populada!");
 
-    const beds = await Bed.bulkCreate(
-      [
-        { number: 101, last_cleaning: "2025-01-15 10:30:00", unit: 1 },
-        { number: 102, last_cleaning: "2025-03-22 14:45:00", unit: 1 },
-        { number: 201, last_cleaning: "2025-05-10 08:20:00", unit: 2 },
-        { number: 202, last_cleaning: "2025-07-18 16:50:00", unit: 2 },
-        { number: 301, last_cleaning: new Date(), unit: 3 },
-      ],
-      { returning: true }
-    );
+    const beds = await Bed.bulkCreate([
+      { number: 101, last_cleaning: "2025-01-15 10:30:00", unit: 1 },
+      { number: 102, last_cleaning: "2025-03-22 14:45:00", unit: 1 },
+      { number: 201, last_cleaning: "2025-05-10 08:20:00", unit: 2 },
+      { number: 202, last_cleaning: "2025-07-18 16:50:00", unit: 2 },
+      { number: 301, last_cleaning: "2025-11-05 12:15:00", unit: 3 },
+    ]);
     console.log("Tabela Bed populada!");
 
     await Employee.bulkCreate([
