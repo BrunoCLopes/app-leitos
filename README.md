@@ -21,7 +21,17 @@ git clone https://github.com/BrunoCLopes/app-leitos.git
 npm install
 ```
 
-**3. Inicie o servidor**
+**3. Inicialize o Banco de Dados**
+```bash
+node database/initialize.js
+```
+
+**4. Popular o Banco de Dados com dados de exemplo**
+```bash
+node database/seed.js
+```
+
+**5. Inicie o servidor**
 ```bash
 npm run dev
 ```
