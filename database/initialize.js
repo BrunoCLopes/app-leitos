@@ -1,12 +1,13 @@
+require("dotenv").config();
 const mysql = require("mysql2/promise");
 const { sequelize } = require("../models");
 
 (async () => {
   try {
     const connection = await mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "",
+      host: process.env.DATABASE_HOST,
+      user: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
     });
 
     await connection.query("CREATE DATABASE IF NOT EXISTS leitos");

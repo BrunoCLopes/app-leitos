@@ -1,7 +1,8 @@
+require("dotenv").config();
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize("leitos", "root", "", {
-  host: "localhost",
-  dialect: "mysql",
+  host: process.env.DATABASE_HOST,
+  dialect: process.env.DATABASE_DIALECT,
 });
 
 const Role = require("./Role.model")(sequelize, DataTypes);
