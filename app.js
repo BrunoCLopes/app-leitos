@@ -1,3 +1,4 @@
+var dotenv = require("dotenv").config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -10,6 +11,8 @@ var pacientsRouter = require('./routes/pacients');
 var hospitalBedsRouter = require('./routes/hospital-beds');
 var teamRouter = require('./routes/team');
 var requestsRouter = require('./routes/requests');
+var models = require('./models/index');
+
 
 var app = express();
 
