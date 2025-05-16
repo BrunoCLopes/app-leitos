@@ -1,27 +1,27 @@
 <div class="background-side-bar">
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a href="/dashboard" class="nav-link"><span class="material-symbols-outlined">
+            <a href="/dashboard" class="<%= title === 'Painel' ? 'nav-link active' : 'nav-link'%>"><span class="material-symbols-outlined">
                 dashboard
             </span>Painel</a>
         </li>
         <li class="nav-item">
-            <a href="/pacients" class="nav-link"><span class="material-symbols-outlined">
+            <a href="/pacients" class="<%= title === 'Pacientes' ? 'nav-link active' : 'nav-link'%>"><span class="material-symbols-outlined">
                 groups
             </span>Pacientes</a>
         </li>
         <li class="nav-item">
-            <a href="/hospital-beds" class="nav-link"><span class="material-symbols-outlined">
+            <a href="/hospital-beds" class="<%= title === 'Leitos' ? 'nav-link active' : 'nav-link'%>"><span class="material-symbols-outlined">
                 hotel
             </span>Leitos</a>
         </li>
         <li class="nav-item">
-            <a href="/team" class="nav-link"><span class="material-symbols-outlined">
+            <a href="/team" class="<%= title === 'Equipe' ? 'nav-link active' : 'nav-link'%>"><span class="material-symbols-outlined">
                 medical_information
             </span>Equipe</a>
         </li>
         <li class="nav-item">
-            <a href="/requests" class="nav-link"><span class="material-symbols-outlined">
+            <a href="/requests" class="<%= title === 'Solicitações' ? 'nav-link active' : 'nav-link'%>"><span class="material-symbols-outlined">
                 room_service
             </span>Solicitações</a>
         </li>
