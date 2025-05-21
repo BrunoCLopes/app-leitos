@@ -11,15 +11,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
 </head>
+
 <body>
     <%- include('partials/header') %>
-    <div class="d-flex flex-row">
-        <%- include('partials/sidebar') %>
-        <%- body %>
-    </div>
-
+        <main class="d-flex flex-row">
+            <div class="sidebar-div">
+                <%- include('partials/sidebar') %>
+            </div>
+            <div class="content-div">
+                <%- body %>
+            </div>
+        </main>
 </body>
 
 </html>

@@ -29,14 +29,7 @@
     color: #ffffff;
 }
 
-.background-side-bar {
-    width: 25rem;
-    height: 100%;
-    background-color: #EEEEEE;
-}
-
 .logo {
-    padding-top: 30px;
     display: flex;
     justify-content: center;
 }
