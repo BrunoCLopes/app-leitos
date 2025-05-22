@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/stylesheets/sidebar.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/base.css">
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
@@ -22,7 +23,7 @@
             <div class="sidebar-div">
                 <%- include('partials/sidebar') %>
             </div>
-            <div class="content-div">
+            <div class="content-div d-flex flex-column">
                 <%- body %>
             </div>
         </main>
