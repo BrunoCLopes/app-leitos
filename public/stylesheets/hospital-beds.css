@@ -1,0 +1,84 @@
+.hospital-beds-div {
+    gap: 100px;
+    justify-content: center;
+}
+
+.title-div {
+    font-size: 25px;
+    color: #FFFFFF;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    height: 4rem;
+}
+
+.hospital-beds {
+    margin-top: 50px;
+    border-radius: 25px;
+    width: 25%;
+    height: 49rem;
+    background-color: rgb(238, 238, 238, 0.5);
+}
+
+.scroll-bed-div{
+    width: 100%;
+    height: 45rem;
+    overflow-y: auto;
+    scrollbar-width: none;  
+}
+
+.avaiable-title {
+    background-color: #4CAF50;
+}
+
+.maintenance-title {
+    background-color: #E2C000;
+}
+
+.occupied-title {
+    background-color: #E53935;
+}
+
+.bed-cards-div {
+    justify-content: center;
+}
+
+.bed-card {
+    gap: 5px;
+    font-size: 22px;
+    background-color: #FFFFFF;
+    margin: 15px;
+    padding: 20px 0 20px 10px;
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.4);
+}
+
+.bed-card span{
+    font-size: 24px;
+}
+
+.modal-content {
+    border-radius: 25px;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 28px;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-header {
+    padding: 10px 15px 10px 15px;
+    color: #FFFFFF;
+    border-radius: 25px;
+}
+
+.btn-close-modal {
+    color: #FFFFFF;
+    background: transparent;
+    border: none;
+    line-height: 1;
+}

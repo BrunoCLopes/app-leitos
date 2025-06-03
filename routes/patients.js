@@ -4,14 +4,14 @@ const fs = require('fs');
 const path = require('path');
 
 router.get('/', function(req, res, next) {
-    const pacientsContent = fs.readFileSync(
-        path.join(__dirname, '../views/pages/pacients.ejs'),
+    const patientsContent = fs.readFileSync(
+        path.join(__dirname, '../views/pages/patients.ejs'),
         'utf8'
       );
 
   res.render('layout', {
     title: 'Pacientes',
-    body: pacientsContent
+    body: patientsContent
   });
 });
 

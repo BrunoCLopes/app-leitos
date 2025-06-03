@@ -1,0 +1,54 @@
+<div class="legend-div d-flex">
+    <div class="legend-item d-flex">
+        <div class="green-circle legend-color-div"></div>
+        <span class="legend-text">Estável</span>
+    </div>
+    <div class="legend-item d-flex">
+        <div class="yellow-circle legend-color-div"></div>
+        <span class="legend-text">Moderado</span>
+    </div>
+    <div class="legend-item d-flex">
+        <div class="red-circle legend-color-div"></div>
+        <span class="legend-text">Crítico</span>
+    </div>
+</div>
+<div class="patients-div d-flex flex-column">
+    <div class="patient-card moderate d-flex" onclick="toggleCard(this)">
+        <div class="patient-summary">
+            <h3>ABC</h3>
+            <div class="patient-details">
+                <h2>123</h2>
+            </div>
+        </div>
+        <span class="expand-icon d-flex material-symbols-outlined">
+            keyboard_arrow_down
+        </span>
+    </div>
+    <div class="patient-card critic d-flex" onclick="toggleCard(this)">
+        <div class="patient-summary">
+            <h3>ABC</h3>
+            <div class="patient-details">
+                <h2>123</h2>
+            </div>
+        </div>
+        <span class="expand-icon d-flex material-symbols-outlined">
+            keyboard_arrow_down
+        </span>
+    </div>
+    <div class="patient-card estable d-flex" onclick="toggleCard(this)">
+        <div class="patient-summary">
+            <h3>ABC</h3>
+            <div class="patient-details">
+                <h2>123</h2>
+            </div>
+        </div>
+        <span class="expand-icon d-flex material-symbols-outlined">
+            keyboard_arrow_down
+        </span>
+    </div>
+</div>
+<script>
+    function toggleCard(card) {
+        card.classList.toggle('expanded');
+    }
+</script>

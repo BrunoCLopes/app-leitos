@@ -1,1 +1,98 @@
-<h1>Solicitações</h1>
+<div class="legend-div d-flex">
+    <div class="legend-item d-flex">
+        <div class="orange-circle legend-color-div"></div>
+        <span class="legend-text">Manutenção</span>
+    </div>
+    <div class="legend-item d-flex">
+        <div class="purple-circle legend-color-div"></div>
+        <span class="legend-text">Limpeza</span>
+    </div>
+    <div class="legend-item d-flex">
+        <div class="light-green-circle legend-color-div"></div>
+        <span class="legend-text">Transferência de Paciente</span>
+    </div>
+    <div class="legend-item d-flex">
+        <div class="blue-circle legend-color-div"></div>
+        <span class="legend-text">Medicar Paciente</span>
+    </div>
+</div>
+<h2 class="requests-list d-flex">Lista de Solicitações</h2>
+<div class="requests-div d-flex">
+    <div class="requests-background d-flex flex-column">
+        <div class="request request-medicate-patient d-flex flex-column">
+            <div class="request-summary d-flex flex-row">
+                <span class="type-label label">Tipo: <span class="text">Medicar Paciente</span></span>
+                <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
+                <span class="bed-label label">Leito: <span class="text">123</span></span>
+                <div class="edit-delete-div d-flex flex-row">
+                    <span onclick=editRequest() class="edit-icon material-symbols-outlined">edit</span>
+                    <span onclick=deleteRequest() class="delete-icon material-symbols-outlined">delete</span>
+                </div>
+            </div>
+            <div class="request-details d-flex">
+                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para ingerir medicamentos grandes.</span></span>
+            </div>
+        </div>
+        <div class="request request-maintenance d-flex flex-column">
+            <div class="request-summary d-flex flex-row">
+                <span class="type-label label">Tipo: <span class="text">Medicar Paciente</span></span>
+                <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
+                <span class="bed-label label">Leito: <span class="text">123</span></span>
+                <div class="edit-delete-div d-flex flex-row">
+                    <span onclick=editRequest() class="edit-icon material-symbols-outlined">edit</span>
+                    <span onclick=deleteRequest() class="delete-icon material-symbols-outlined">delete</span>
+                </div>
+            </div>
+            <div class="request-details d-flex">
+                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para ingerir medicamentos grandes.</span></span>
+            </div>
+        </div>
+        <div class="request request-cleaning d-flex flex-column">
+            <div class="request-summary d-flex flex-row">
+                <span class="type-label label">Tipo: <span class="text">Medicar Paciente</span></span>
+                <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
+                <span class="bed-label label">Leito: <span class="text">123</span></span>
+                <div class="edit-delete-div d-flex flex-row">
+                    <span onclick=editRequest() class="edit-icon material-symbols-outlined">edit</span>
+                    <span onclick=deleteRequest() class="delete-icon material-symbols-outlined">delete</span>
+                </div>
+            </div>
+            <div class="request-details d-flex">
+                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para ingerir medicamentos grandes.</span></span>
+            </div>
+        </div>
+        <div class="request request-patient-transfer d-flex flex-column">
+            <div class="request-summary d-flex flex-row">
+                <span class="type-label label">Tipo: <span class="text">Medicar Paciente</span></span>
+                <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
+                <span class="bed-label label">Leito: <span class="text">123</span></span>
+                <div class="edit-delete-div d-flex flex-row">
+                    <span onclick=editRequest() class="edit-icon material-symbols-outlined">edit</span>
+                    <span onclick=deleteRequest() class="delete-icon material-symbols-outlined">delete</span>
+                </div>
+            </div>
+            <div class="request-details d-flex">
+                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para ingerir medicamentos grandes.</span></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="new-request-button-div d-flex">
+    <button onclick=newRequest() class="new-request-button d-flex">
+        <h3>Nova Solicitação</h3>
+    </button>
+</div>
+
+<script>
+    function editRequest() {
+
+    }
+
+    function deleteRequest() {
+
+    }
+
+    function newRequest() {
+
+    }
+</script>
