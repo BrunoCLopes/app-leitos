@@ -31,14 +31,28 @@
 }
 
 .patient-summary{
+    width: 100%;
     padding: 15px;
 }
 
 .patient-details {
     max-height: 0;
+    width: 100%;
     transition: max-height 0.2s linear, opacity 0.3s ease;
     opacity: 0;
     overflow: hidden;
+}
+
+.w-70{
+    width: 70%;
+}
+
+.w-30{
+    width: 30%;
+}
+
+.patient-details span, .patient-summary span{
+    font-size: 24px;
 }
 
 .patient-card.expanded .patient-details {

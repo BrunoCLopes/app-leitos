@@ -98,6 +98,7 @@
 }
 
 .request-details{
+    align-items: center;
     transition: max-height 0.3s ease-out, opacity 0.2s ease-out;
     opacity: 0;
     max-height: 0;
@@ -106,6 +107,7 @@
 
 .request-details span{
     font-size: 24px;
+    padding-bottom: 10px;
 }
 
 .request:hover{

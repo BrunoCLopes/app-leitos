@@ -28,7 +28,7 @@
     scrollbar-width: none;  
 }
 
-.avaiable-title {
+.available-title {
     background-color: #4CAF50;
 }
 
@@ -81,4 +81,22 @@
     background: transparent;
     border: none;
     line-height: 1;
+}
+
+.modal-body span{
+    font-size: 24px;
+}
+
+.observations-div{
+    border-radius: 10px;
+    background-color: #EEEEEE;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    margin-top: 5px;
+    height: 10rem;
+    padding: 5px;
+}
+
+.observations-div span{
+    font-size: 20px;
 }
