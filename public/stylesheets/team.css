@@ -10,7 +10,7 @@
     border: solid 5px #E53935;
 }
 
-.team-div{
+.team-div {
     padding: 15px 0 15px;
     overflow-y: auto;
     scrollbar-width: none;
@@ -28,33 +28,44 @@
     background-color: #FFFFFF;
 }
 
-.photo-div{
+.photo-div {
     padding: 20px;
     align-items: center;
 }
 
-.border-photo{
+.border-photo {
     justify-content: center;
     align-items: center;
     width: 170px;
     height: 170px;
     border-radius: 100px;
-    border: solid 10px #4CAF50;
 }
 
-.photo.material-symbols-outlined{
+.photo.material-symbols-outlined {
     color: #1D436F;
     font-size: 160px;
 }
 
-.professional-infos{
+.professional-infos {
     justify-content: center;
 }
 
-.info-label{
+.info-label {
     font-weight: bold;
 }
 
-.info-label span{
+.info-label span {
     font-weight: normal;
+}
+
+.photo-green-border {
+    border: solid 10px #4CAF50;
+}
+
+.photo-red-border {
+    border: solid 10px #E53935;
+}
+
+.photo-yellow-border {
+    border: solid 10px #E2C000;
 }

@@ -12,13 +12,18 @@ var hospitalBedsRouter = require('./routes/hospital-beds');
 var teamRouter = require('./routes/team');
 var requestsRouter = require('./routes/requests');
 var models = require('./models/index');
+var expressLayouts = require('express-ejs-layouts');
 
 
 var app = express();
 
+app.locals.title = 'Hospital Management System';
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(expressLayouts);
 
 app.use(logger('dev'));
 app.use(express.json());

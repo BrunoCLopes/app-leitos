@@ -13,25 +13,39 @@
     </div>
 </div>
 <div class="team-div d-flex flex-wrap">
-    <div class="professional d-flex flex-row">
-        <div class="photo-div d-flex">
-            <div class="border-photo d-flex">
-                <span class="photo material-symbols-outlined">
-                    face
-                </span>
+    <% employees.forEach(function(employee) { %>
+        <div class="professional d-flex flex-row">
+            <div class="photo-div d-flex">
+                <div class="border-photo d-flex 
+                    <% if (employee.situation == 'Intervalo') {%> photo-yellow-border <% } 
+                    else if (employee.situation == 'Em plantão') {%> photo-green-border <%} 
+                    else{%> photo-red-border <%}%>">
+                    <span class="photo material-symbols-outlined">
+                        face
+                    </span>
+                </div>
+            </div>
+            <div class="professional-infos d-flex flex-column">
+                <h3 class="info-label">Nome: <span>
+                        <%= employee.name %>
+                    </span></h3>
+                <h3 class="info-label">ID: <span>
+                        <%= employee.id %>
+                    </span></h3>
+                <h3 class="info-label">Cargo: <span>
+                        <%= employee.role %>
+                    </span></h3>
+                <h3 class="info-label">Situação: <span>
+                        <%= employee.situation %>
+                    </span></h3>
+                <h3 class="info-label">Especialidade: <span>
+                        <%= employee.speciality %>
+                    </span></h3>
             </div>
         </div>
-        <div class="professional-infos d-flex flex-column">
-            <h3 class="info-label">Nome: <span>Fulano da Silva</span></h3>
-            <h3 class="info-label">ID: <span>123456</span></h3>
-            <h3 class="info-label">Cargo: <span>Enfermeiro</span></h3>
-            <h3 class="info-label">Situação: <span>Em plantão</span></h3>
-            <h3 class="info-label">Especialidade: <span>UTI</span></h3>
-        </div>
-    </div>
-    <div class="professional"></div>
-    <div class="professional"></div>
-    <div class="professional"></div>
-    <div class="professional"></div>
-    <div class="professional"></div>
+        <% }); %>
 </div>
+
+<style>
+    .
+</style>
