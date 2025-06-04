@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: "Cabin";
+    font-family: "Lexend";
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -15,8 +15,43 @@ main{
     height: 100%;
 }
 
+.label{
+    font-weight: bold;
+}
+
+.text{
+    font-weight: normal;
+}
+
 .sidebar-div{
     width: 20rem;
     height: 100%;
     background-color: #EEEEEE;
+}
+
+.content-div{
+    width: 100rem;
+}
+
+.legend-div {
+    margin: 20px;
+    justify-content: center;
+    gap: 60px;
+}
+
+.legend-item {
+    align-items: center;
+    gap: 10px;
+}
+
+.legend-color-div {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+}
+
+.legend-text {
+    font-weight: bold;
+    font-size: 32px;
+    gap: 30px;
 }
