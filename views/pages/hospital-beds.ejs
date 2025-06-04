@@ -6,42 +6,42 @@
         <div class="scroll-bed-div">
             <div class="bed-cards-div d-flex">
                 <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#bedModal">
+                    data-bs-target="#modal-available">
                     <span class="label">Nº Leito: <span class="text">123456</span></span>
                     <span class="label">Setor: <span class="text">Enfermaria</span></span>
                 </div>
             </div>
             <div class="bed-cards-div d-flex">
                 <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#bedModal">
+                    data-bs-target="#modal-available">
                     <span class="label">Nº Leito: <span class="text">123456</span></span>
                     <span class="label">Setor: <span class="text">Enfermaria</span></span>
                 </div>
             </div>
             <div class="bed-cards-div d-flex">
                 <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#bedModal">
+                    data-bs-target="#modal-available">
                     <span class="label">Nº Leito: <span class="text">123456</span></span>
                     <span class="label">Setor: <span class="text">Enfermaria</span></span>
                 </div>
             </div>
             <div class="bed-cards-div d-flex">
                 <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#bedModal">
+                    data-bs-target="#modal-available">
                     <span class="label">Nº Leito: <span class="text">123456</span></span>
                     <span class="label">Setor: <span class="text">Enfermaria</span></span>
                 </div>
             </div>
             <div class="bed-cards-div d-flex">
                 <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#bedModal">
+                    data-bs-target="#modal-available">
                     <span class="label">Nº Leito: <span class="text">123456</span></span>
                     <span class="label">Setor: <span class="text">Enfermaria</span></span>
                 </div>
             </div>
             <div class="bed-cards-div d-flex">
                 <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#bedModal">
+                    data-bs-target="#modal-available">
                     <span class="label">Nº Leito: <span class="text">123456</span></span>
                     <span class="label">Setor: <span class="text">Enfermaria</span></span>
                 </div>
@@ -54,8 +54,8 @@
         </div>
         <div class="scroll-bed-div">
             <div class="bed-cards-div d-flex">
-                <div class="bed-card maintenance-bed-card d-flex flex-column"  role="button" data-bs-toggle="modal" data-bs-target="#bedModal"
-                >
+                <div class="bed-card maintenance-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
+                    data-bs-target="#modal-maintenance">
                     <span class="label">Nº Leito: <span class="text">654321</span></span>
                     <span class="label">Setor: <span class="text">Enfermaria</span></span>
                     <span class="label">Motivo: <span class="text">Equipamento Quebrado</span></span>
@@ -68,9 +68,8 @@
             <span class="title-text">Ocupado</span>
         </div>
         <div class="scroll-bed-div">
-            <div class="bed-cards-div d-flex">
-                <div class="bed-card occupied-bed-card d-flex flex-column"  role="button" data-bs-toggle="modal" data-bs-target="#bedModal"
-                >
+            <div class="bed-cards-div d-flex gap-2">
+                <div class="bed-card occupied-bed-card d-flex flex-column" role="button" data-bs-toggle="modal" data-bs-target="#modal-occupied">
                     <span class="label">Nº Leito: <span class="text">162435</span></span>
                     <span class="label">Setor: <span class="text">Enfermaria</span></span>
                     <span class="label">Paciente: <span class="text">Beltrano Costa Silva Junior Pereira</span></span>
@@ -80,7 +79,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="bedModal" tabindex="-1" aria-labelledby="bedModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-available" tabindex="-1" aria-labelledby="bedModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header available-title">
@@ -89,26 +88,57 @@
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            <div class="modal-body d-flex flex-column">
-                <div class="modal-available">
-                    <span class="label">Status: <span class="text">Disponível</span></span>
-                    <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                    <span class="label">Última Limpeza: <span class="text">03/06/2025 15:34 </span></span>
-                    <span class="label">Observações:</span>
-                    <div class="observations-div">
-                        <span> Leito com aparelho X disponível</span>
-                    </div>
+            <div class="modal-body d-flex flex-column gap-2">
+                <span class="label">Status: <span class="text">Disponível</span></span>
+                <span class="label">Setor: <span class="text">Enfermaria</span></span>
+                <span class="label">Última Limpeza: <span class="text">03/06/2025 15:34 </span></span>
+                <span class="label">Observações:</span>
+                <div class="observations-div">
+                    <span> Leito com aparelho X disponível</span>
                 </div>
-                <!--
-                <div class="modal-maintenance">
-                    <span class="label">Status: <span class="text">Em Manutenção</span></span>
-                    <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                    <span class="label">Última Limpeza: <span class="text">03/06/2025 15:34 </span></span>
-                    <span class="label">Motivo: <span class="text">Equipamento Quebrado</span></span>
-                    <span class="label">Responsável: <span class="text">Fulano de Tal</span></span>
-                    <span class="label">Previsão: <span class="text">3 Dias</span></span>
-                </div>
-                -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-maintenance" tabindex="-1" aria-labelledby="bedModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header maintenance-title">
+                <span class="modal-title" id="bedModalLabel">Leito 654321</span>
+                <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Fechar">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column gap-2">
+                <span class="label">Status: <span class="text">Em Manutenção</span></span>
+                <span class="label">Setor: <span class="text">Enfermaria</span></span>
+                <span class="label">Última Limpeza: <span class="text">03/06/2025 15:34 </span></span>
+                <span class="label">Motivo: <span class="text">Equipamento Quebrado</span></span>
+                <span class="label">Responsável: <span class="text">Fulano de Tal</span></span>
+                <span class="label">Previsão: <span class="text">3 Dias</span></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-occupied" tabindex="-1" aria-labelledby="bedModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header occupied-title">
+                <span class="modal-title" id="bedModalLabel">Leito 162435</span>
+                <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Fechar">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column gap-2">
+                <span class="label">Status: <span class="text">Ocupado</span></span>
+                <span class="label">Setor: <span class="text">Enfermaria</span></span>
+                <span class="label">Última Limpeza: <span class="text">03/06/2025 15:34 </span></span>
+                <span class="label">Paciente: <span class="text">Ciclano da Silva</span></span>
+                <span class="label">Tempo de Ocupação: <span class="text">4 Dias</span></span>
+                <span class="label">Motivo da Internação: <span class="text">Pneumonia</span></span>
+                <span class="label">Gravidade: <span class="text modal-estable">Estável</span></span>
             </div>
         </div>
     </div>

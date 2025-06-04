@@ -30,7 +30,8 @@
                 </div>
             </div>
             <div class="request-details d-flex">
-                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para ingerir medicamentos grandes.</span></span>
+                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para
+                        ingerir medicamentos grandes.</span></span>
             </div>
         </div>
         <div class="request request-maintenance d-flex flex-column">
@@ -44,7 +45,8 @@
                 </div>
             </div>
             <div class="request-details d-flex">
-                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para ingerir medicamentos grandes.</span></span>
+                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para
+                        ingerir medicamentos grandes.</span></span>
             </div>
         </div>
         <div class="request request-cleaning d-flex flex-column">
@@ -58,7 +60,8 @@
                 </div>
             </div>
             <div class="request-details d-flex">
-                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para ingerir medicamentos grandes.</span></span>
+                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para
+                        ingerir medicamentos grandes.</span></span>
             </div>
         </div>
         <div class="request request-patient-transfer d-flex flex-column">
@@ -72,15 +75,50 @@
                 </div>
             </div>
             <div class="request-details d-flex">
-                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para ingerir medicamentos grandes.</span></span>
+                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para
+                        ingerir medicamentos grandes.</span></span>
             </div>
         </div>
     </div>
 </div>
 <div class="new-request-button-div d-flex">
-    <button onclick=newRequest() class="new-request-button d-flex">
+    <button onclick=newRequest() data-bs-toggle="modal" data-bs-target="#modal-new-request"
+        class="new-request-button d-flex">
         <h3>Nova Solicitação</h3>
     </button>
+</div>
+
+<div class="modal fade" id="modal-new-request" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header new-request-title">
+                <span class="modal-title" id="bedModalLabel">Nova Solicitação</span>
+                <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Fechar">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column gap-2">
+                <div class="d-flex flex-row">
+                    <span class="label">Tipo
+                        <select class="type-select" name="" id="">
+                            <option value="">Selecione</option>
+                            <option value="maintenance">Manutenção</option>
+                            <option value="cleaning">Limpeza</option>
+                            <option value="patient-transfer">Transferência de Paciente</option>
+                            <option value="medicate-patient">Medicar Paciente</option>
+                        </select></span>
+                    <span class="label">Leito: <input maxlength="6" type="number"></span>
+                </div>
+                <span class="label">Profissional <select class="professional-select" name="" id=""></select></span>
+                <span class="label">Observações:</span>
+                <textarea name="" id=""></textarea>
+                <div class="d-flex flex-row">
+                    <button class="clean-button">Limpar</button>
+                    <button class="confirm-button">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>

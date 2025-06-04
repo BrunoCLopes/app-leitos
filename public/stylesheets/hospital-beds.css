@@ -28,16 +28,28 @@
     scrollbar-width: none;  
 }
 
-.available-title {
+.available-title{
     background-color: #4CAF50;
 }
 
-.maintenance-title {
+.maintenance-title{
     background-color: #E2C000;
 }
 
-.occupied-title {
+.occupied-title{
     background-color: #E53935;
+}
+
+.modal-estable{
+    color: #4CAF50;
+}
+
+.modal-moderate{
+    color: #E2C000;
+}
+
+.modal-critic{
+    color: #E53935;
 }
 
 .bed-cards-div {
@@ -56,34 +68,6 @@
 }
 
 .bed-card span{
-    font-size: 24px;
-}
-
-.modal-content {
-    border-radius: 25px;
-}
-
-.modal-title {
-    font-weight: bold;
-    font-size: 28px;
-    width: 100%;
-    text-align: center;
-}
-
-.modal-header {
-    padding: 10px 15px 10px 15px;
-    color: #FFFFFF;
-    border-radius: 25px;
-}
-
-.btn-close-modal {
-    color: #FFFFFF;
-    background: transparent;
-    border: none;
-    line-height: 1;
-}
-
-.modal-body span{
     font-size: 24px;
 }
 

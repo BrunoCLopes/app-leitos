@@ -55,3 +55,31 @@ main{
     font-size: 32px;
     gap: 30px;
 }
+
+.modal-content {
+    border-radius: 25px;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 28px;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-header {
+    padding: 10px 15px 10px 15px;
+    color: #FFFFFF;
+    border-radius: 25px;
+}
+
+.btn-close-modal {
+    color: #FFFFFF;
+    background: transparent;
+    border: none;
+    line-height: 1;
+}
+
+.modal-body span{
+    font-size: 24px;
+}
