@@ -4,47 +4,16 @@
             <span class="title-text">Disponível</span>
         </div>
         <div class="scroll-bed-div">
-            <div class="bed-cards-div d-flex">
-                <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#modal-available">
-                    <span class="label">Nº Leito: <span class="text">123456</span></span>
-                    <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                </div>
-            </div>
-            <div class="bed-cards-div d-flex">
-                <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#modal-available">
-                    <span class="label">Nº Leito: <span class="text">123456</span></span>
-                    <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                </div>
-            </div>
-            <div class="bed-cards-div d-flex">
-                <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#modal-available">
-                    <span class="label">Nº Leito: <span class="text">123456</span></span>
-                    <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                </div>
-            </div>
-            <div class="bed-cards-div d-flex">
-                <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#modal-available">
-                    <span class="label">Nº Leito: <span class="text">123456</span></span>
-                    <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                </div>
-            </div>
-            <div class="bed-cards-div d-flex">
-                <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#modal-available">
-                    <span class="label">Nº Leito: <span class="text">123456</span></span>
-                    <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                </div>
-            </div>
-            <div class="bed-cards-div d-flex">
-                <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#modal-available">
-                    <span class="label">Nº Leito: <span class="text">123456</span></span>
-                    <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                </div>
+            <div class="bed-cards-div d-flex flex-column">
+                <% beds.forEach(function(bed) { %>
+                    <% if (bed.status=='Disponível' ) { %>
+                        <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
+                            data-bs-target="#modal-available">
+                            <span class="label">Nº Leito: <span class="text"><%= bed.number %></span></span>
+                            <span class="label">Setor: <span class="text"><%= bed.unit %></span></span>
+                        </div>
+                    <% } %>
+                <% }); %>
             </div>
         </div>
     </div>
@@ -53,13 +22,17 @@
             <span class="title-text">Em Manutenção</span>
         </div>
         <div class="scroll-bed-div">
-            <div class="bed-cards-div d-flex">
-                <div class="bed-card maintenance-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                    data-bs-target="#modal-maintenance">
-                    <span class="label">Nº Leito: <span class="text">654321</span></span>
-                    <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                    <span class="label">Motivo: <span class="text">Equipamento Quebrado</span></span>
-                </div>
+            <div class="bed-cards-div d-flex flex-column">
+                <% beds.forEach(function(bed) { %>
+                    <% if (bed.status=='Em Manutenção' ) { %>
+                        <div class="bed-card maintenance-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
+                            data-bs-target="#modal-maintenance">
+                            <span class="label">Nº Leito: <span class="text"><%= bed.number %></span></span>
+                            <span class="label">Setor: <span class="text"><%= bed.unit %></span></span>
+                            <span class="label">Motivo: <span class="text"></span></span>
+                        </div>
+                    <% } %>
+                <% }); %>
             </div>
         </div>
     </div>
@@ -68,12 +41,17 @@
             <span class="title-text">Ocupado</span>
         </div>
         <div class="scroll-bed-div">
-            <div class="bed-cards-div d-flex gap-2">
-                <div class="bed-card occupied-bed-card d-flex flex-column" role="button" data-bs-toggle="modal" data-bs-target="#modal-occupied">
-                    <span class="label">Nº Leito: <span class="text">162435</span></span>
-                    <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                    <span class="label">Paciente: <span class="text">Beltrano Costa Silva Junior Pereira</span></span>
-                </div>
+            <div class="bed-cards-div d-flex flex-column">
+                <% beds.forEach(function(bed) { %>
+                    <% if (bed.status=='Ocupado' ) { %>
+                        <div class="bed-card occupied-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
+                            data-bs-target="#modal-occupied">
+                            <span class="label">Nº Leito: <span class="text"><%= bed.number %></span></span>
+                            <span class="label">Setor: <span class="text"><%= bed.unit %></span></span>
+                            <span class="label">Paciente: <span class="text"></span></span>
+                        </div>
+                    <% } %>
+                <% }); %>
             </div>
         </div>
     </div>

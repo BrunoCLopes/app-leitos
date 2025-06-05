@@ -20,6 +20,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      observation: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       tableName: "bed",

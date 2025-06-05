@@ -46,11 +46,11 @@ const {
     console.log("Tabela Speciality populada!");
 
     const beds = await Bed.bulkCreate([
-      { number: 101, last_cleaning: "2025-01-15 10:30:00", unit: 1 },
-      { number: 102, last_cleaning: "2025-03-22 14:45:00", unit: 1 },
-      { number: 201, last_cleaning: "2025-05-10 08:20:00", unit: 2 },
-      { number: 202, last_cleaning: "2025-07-18 16:50:00", unit: 2 },
-      { number: 301, last_cleaning: "2025-11-05 12:15:00", unit: 3 },
+      { number: 101, last_cleaning: "2025-01-15 10:30:00", unit: 1, status: "Disponível", observation: "Leito equipado com monitor multiparamétrico."},
+      { number: 102, last_cleaning: "2025-03-22 14:45:00", unit: 1, status: "Disponível", observation: "Disponível ponto de oxigênio e aspiração na cabeceira."},
+      { number: 201, last_cleaning: "2025-05-10 08:20:00", unit: 2, status: "Ocupado" },
+      { number: 202, last_cleaning: "2025-07-18 16:50:00", unit: 2, status: "Ocupado" },
+      { number: 301, last_cleaning: "2025-11-05 12:15:00", unit: 3, status: "Em Manutenção"},
     ]);
     console.log("Tabela Bed populada!");
 
