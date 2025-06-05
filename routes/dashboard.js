@@ -3,15 +3,10 @@ var router = express.Router();
 const fs = require('fs');
 const path = require('path');
 
-router.get('/', function(req, res, next) {
-    const dashboardContent = fs.readFileSync(
-        path.join(__dirname, '../views/pages/dashboard.ejs'),
-        'utf8'
-      );
+router.get('/', function (req, res, next) {
 
-  res.render('layout', {
+  res.render('pages/dashboard', {
     title: 'Painel',
-    body: dashboardContent
   });
 });
 

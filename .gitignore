@@ -16,7 +16,7 @@ logs/
 Thumbs.db
 
 # Environment
-.env
+# .env
 .env.test
 .env.*
 
