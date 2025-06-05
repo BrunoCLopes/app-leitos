@@ -25,8 +25,9 @@
                 <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
                 <span class="bed-label label">Leito: <span class="text">123</span></span>
                 <div class="edit-delete-div d-flex flex-row">
-                    <span onclick=editRequest() class="edit-icon material-symbols-outlined">edit</span>
-                    <span onclick=deleteRequest() class="delete-icon material-symbols-outlined">delete</span>
+                    <span data-bs-toggle="modal" data-bs-target="#modal-edit-request"
+                        class="edit-icon material-symbols-outlined">edit</span>
+                    <span data-bs-toggle="modal" data-bs-target="#modal-delete-request" class="delete-icon material-symbols-outlined">delete</span>
                 </div>
             </div>
             <div class="request-details d-flex">
@@ -55,7 +56,7 @@
                 <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
                 <span class="bed-label label">Leito: <span class="text">123</span></span>
                 <div class="edit-delete-div d-flex flex-row">
-                    <span onclick=editRequest() class="edit-icon material-symbols-outlined">edit</span>
+                    <span class="edit-icon material-symbols-outlined">edit</span>
                     <span onclick=deleteRequest() class="delete-icon material-symbols-outlined">delete</span>
                 </div>
             </div>
@@ -75,14 +76,14 @@
                 </div>
             </div>
             <div class="request-details d-flex">
-                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para ingerir medicamentos grandes.</span></span>
+                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para
+                        ingerir medicamentos grandes.</span></span>
             </div>
         </div>
     </div>
 </div>
 <div class="new-request-button-div d-flex">
-    <button data-bs-toggle="modal" data-bs-target="#modal-new-request"
-        class="new-request-button d-flex">
+    <button data-bs-toggle="modal" data-bs-target="#modal-new-request" class="new-request-button d-flex">
         <h3>Nova Solicitação</h3>
     </button>
 </div>
@@ -91,51 +92,106 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header new-request-title">
-                <span class="modal-title" id="bedModalLabel">Nova Solicitação</span>
+                <span class="modal-title">Nova Solicitação</span>
                 <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Fechar">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            <div class="modal-body d-flex flex-column gap-2">
-                    <span class="label">Tipo
-                        <select required class="type-select" name="" id="type-select">
-                            <option value="">Selecione</option>
-                            <option value="maintenance">Manutenção</option>
-                            <option value="cleaning">Limpeza</option>
-                            <option value="patient-transfer">Transferência de Paciente</option>
-                            <option value="medicate-patient">Medicar Paciente</option>
-                        </select></span>
-                    <span class="label">Leito: <input required class="bed-input" id="bed-input" type="number"></span>
-                <span class="label d-flex flex-column">Profissional 
-                <select required class="professional-select" name="" id="professional-select">
-                    <option value="">Selecione</option>
-                    <option value="1">Fulano da Silva</option>
-                    <option value="2">Ciclano Pereira</option>
-                    <option value="3">Beltrano Costa e Silva Junior de Tal</option>
-                    <option value="4">Fulano Antônio dos Santos da Silva</option>
-                </select>
+            <div class="new-request-body modal-body d-flex flex-column gap-2">
+                <span class="label">Tipo
+                    <select required class="type-select" name="" id="type-select">
+                        <option value="">Selecione</option>
+                        <option value="maintenance">Manutenção</option>
+                        <option value="cleaning">Limpeza</option>
+                        <option value="patient-transfer">Transferência de Paciente</option>
+                        <option value="medicate-patient">Medicar Paciente</option>
+                    </select></span>
+                <span class="label">Leito: <input required class="bed-input" id="bed-input" type="number"></span>
+                <span class="label d-flex flex-column">Profissional
+                    <select required class="professional-select" name="" id="professional-select">
+                        <option value="">Selecione</option>
+                        <option value="1">Fulano da Silva</option>
+                        <option value="2">Ciclano Pereira</option>
+                        <option value="3">Beltrano Costa e Silva Junior de Tal</option>
+                        <option value="4">Fulano Antônio dos Santos da Silva</option>
+                    </select>
                 </span>
                 <span class="label">Observações:</span>
                 <textarea class="observations-text-area" name="" id="observations-text-area"></textarea>
-                <div class="new-request-buttons-div d-flex flex-row gap-3">
-                    <button onclick="clearButton()" class="clean-button">Limpar</button>
-                    <button class="confirm-button">Confirmar</button>
+                <div class="modal-buttons-div d-flex flex-row gap-3">
+                    <button onclick="clearButton('modal-new-request')"
+                        class="clean-button new-request-button">Limpar</button>
+                    <button class="confirm-button new-request-button">Confirmar</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    function clearButton(){
-        const type = document.getElementById('type-select');
-        const bed = document.getElementById('bed-input');
-        const professional = document.getElementById('professional-select');
-        const textArea = document.getElementById('observations-text-area');
+<div class="modal fade" id="modal-edit-request" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header edit-request-title">
+                <span class="modal-title">Editar Solicitação</span>
+                <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Fechar">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column gap-2">
+                <span class="label">Tipo
+                    <select required class="type-select" name="" id="type-select">
+                        <option value="">Selecione</option>
+                        <option value="maintenance">Manutenção</option>
+                        <option value="cleaning">Limpeza</option>
+                        <option value="patient-transfer">Transferência de Paciente</option>
+                        <option value="medicate-patient">Medicar Paciente</option>
+                    </select></span>
+                <span class="label">Leito: <input required class="bed-input" id="bed-input" type="number"></span>
+                <span class="label d-flex flex-column">Profissional
+                    <select required class="professional-select" name="" id="professional-select">
+                        <option value="">Selecione</option>
+                        <option value="1">Fulano da Silva</option>
+                        <option value="2">Ciclano Pereira</option>
+                        <option value="3">Beltrano Costa e Silva Junior de Tal</option>
+                        <option value="4">Fulano Antônio dos Santos da Silva</option>
+                    </select>
+                </span>
+                <span class="label">Observações:</span>
+                <textarea class="observations-text-area" name="" id="observations-text-area"></textarea>
+                <div class="modal-buttons-div d-flex flex-row gap-3">
+                    <button onclick="clearButton('modal-edit-request')"
+                        class="clean-button edit-request-button">Limpar</button>
+                    <button class="confirm-button edit-request-button">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        type.value = "";
-        bed.value = "";
-        professional.value = "";
-        textArea.value = "";
+<div class="modal fade" id="modal-delete-request" tabindex="-1">
+    <div class="modal-dialog modal-s modal-dialog-centered">
+        <div class="modal-content">
+            <div class="d-flex">
+                <span class="modal-title mt-4">Tem certeza que deseja excluir essa solicitação</span>
+            </div>
+            <div class="modal-body d-flex flex-column gap-2">
+                <div class="modal-buttons-div d-flex flex-row gap-3">
+                    <button data-bs-dismiss="modal" class="no-button btn-modal-close">Não</button>
+                    <button class="yes-button">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function clearButton(modal) {
+        const modalElements = document.getElementById(modal);
+        const elements = modalElements.querySelectorAll('select, input, textarea');
+
+        elements.forEach(element => {
+            element.value = "";
+        });
     }
 </script>
