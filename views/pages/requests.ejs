@@ -70,19 +70,18 @@
                 <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
                 <span class="bed-label label">Leito: <span class="text">123</span></span>
                 <div class="edit-delete-div d-flex flex-row">
-                    <span onclick=editRequest() class="edit-icon material-symbols-outlined">edit</span>
-                    <span onclick=deleteRequest() class="delete-icon material-symbols-outlined">delete</span>
+                    <span class="edit-icon material-symbols-outlined">edit</span>
+                    <span class="delete-icon material-symbols-outlined">delete</span>
                 </div>
             </div>
             <div class="request-details d-flex">
-                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para
-                        ingerir medicamentos grandes.</span></span>
+                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para ingerir medicamentos grandes.</span></span>
             </div>
         </div>
     </div>
 </div>
 <div class="new-request-button-div d-flex">
-    <button onclick=newRequest() data-bs-toggle="modal" data-bs-target="#modal-new-request"
+    <button data-bs-toggle="modal" data-bs-target="#modal-new-request"
         class="new-request-button d-flex">
         <h3>Nova Solicitação</h3>
     </button>
@@ -98,22 +97,28 @@
                 </button>
             </div>
             <div class="modal-body d-flex flex-column gap-2">
-                <div class="d-flex flex-row">
                     <span class="label">Tipo
-                        <select class="type-select" name="" id="">
+                        <select required class="type-select" name="" id="type-select">
                             <option value="">Selecione</option>
                             <option value="maintenance">Manutenção</option>
                             <option value="cleaning">Limpeza</option>
                             <option value="patient-transfer">Transferência de Paciente</option>
                             <option value="medicate-patient">Medicar Paciente</option>
                         </select></span>
-                    <span class="label">Leito: <input maxlength="6" type="number"></span>
-                </div>
-                <span class="label">Profissional <select class="professional-select" name="" id=""></select></span>
+                    <span class="label">Leito: <input required class="bed-input" id="bed-input" type="number"></span>
+                <span class="label d-flex flex-column">Profissional 
+                <select required class="professional-select" name="" id="professional-select">
+                    <option value="">Selecione</option>
+                    <option value="1">Fulano da Silva</option>
+                    <option value="2">Ciclano Pereira</option>
+                    <option value="3">Beltrano Costa e Silva Junior de Tal</option>
+                    <option value="4">Fulano Antônio dos Santos da Silva</option>
+                </select>
+                </span>
                 <span class="label">Observações:</span>
-                <textarea name="" id=""></textarea>
-                <div class="d-flex flex-row">
-                    <button class="clean-button">Limpar</button>
+                <textarea class="observations-text-area" name="" id="observations-text-area"></textarea>
+                <div class="new-request-buttons-div d-flex flex-row gap-3">
+                    <button onclick="clearButton()" class="clean-button">Limpar</button>
                     <button class="confirm-button">Confirmar</button>
                 </div>
             </div>
@@ -122,15 +127,15 @@
 </div>
 
 <script>
-    function editRequest() {
+    function clearButton(){
+        const type = document.getElementById('type-select');
+        const bed = document.getElementById('bed-input');
+        const professional = document.getElementById('professional-select');
+        const textArea = document.getElementById('observations-text-area');
 
-    }
-
-    function deleteRequest() {
-
-    }
-
-    function newRequest() {
-
+        type.value = "";
+        bed.value = "";
+        professional.value = "";
+        textArea.value = "";
     }
 </script>

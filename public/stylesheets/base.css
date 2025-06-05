@@ -83,3 +83,46 @@ main{
 .modal-body span{
     font-size: 24px;
 }
+
+textarea {
+  border: 2px solid #EEEEEE;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #2A7DC0;
+  box-shadow: 0 0 5px rgba(42, 125, 192, 0.4);
+}
+
+input {
+  font-size: 20px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+input:focus {
+  border-color: #2A7DC0;
+  box-shadow: 0 0 5px rgba(42, 125, 192, 0.5);
+}
+
+select {
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  font-size: 20px;
+  background-color: white;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+select:focus {
+  border-color: #2A7DC0;
+  box-shadow: 0 0 5px rgba(42, 125, 192, 0.4);
+}
+
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

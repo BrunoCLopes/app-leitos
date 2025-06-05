@@ -47,7 +47,7 @@
     width: 20rem;
     height: 5rem;
     border-radius: 40px;
-    margin-top: 30px;
+    margin: 20px 0 20px;
     background-color: #2A7DC0;
 }
 
@@ -124,4 +124,35 @@
 
 .new-request-title{
     background-color: #2A7DC0;
+}
+
+.bed-input{
+    width: 25%;
+}
+
+.observations-text-area{
+    resize: none;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+    width: 100%;
+    margin-top: 5px;
+    height: 10rem;
+    padding: 5px;
+}
+
+.new-request-buttons-div{
+    justify-content: center;
+    align-items: center;
+}
+
+.new-request-buttons-div button{
+    margin-top: 10px;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.4);
+    width: 30%;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    border-radius: 25px;
+    background-color: #2A7DC0;
+    color: #FFFFFF;
 }
