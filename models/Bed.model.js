@@ -20,6 +20,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      status_fk: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      unit_fk: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       status: {
         type: DataTypes.STRING,
         allowNull: false,
