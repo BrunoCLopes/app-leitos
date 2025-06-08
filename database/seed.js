@@ -93,7 +93,7 @@ const {
     await Maintenance_bed.bulkCreate([
       {
         id_bed: beds[3].id,
-        reason: "Reparo no painel elétrico do leito devido a falha detectada durante inspeção. O leito ficará indisponível até a conclusão do serviço.",
+        reason: "Reparo no painel elétrico do leito devido a falha detectada durante inspeção.",
         estimated_completion: "2025-06-12 16:00:00",
         responsible: "Marcos Pereira"
       }

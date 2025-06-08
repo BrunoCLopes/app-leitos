@@ -5,17 +5,15 @@
         </div>
         <div class="scroll-bed-div">
             <div class="bed-cards-div d-flex flex-column">
-            <!--
                 <% beds.forEach(function(bed) { %>
-                    <% if (bed.status=='Disponível' ) { %>
+                    <% if (bed.status=='Disponível') { %>
                         <div class="bed-card available-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                            data-bs-target="#modal-available">
+                            data-bs-target="#modal-available" data-bed-id="<%= bed.id %>">
                             <span class="label">Nº Leito: <span class="text"><%= bed.number %></span></span>
                             <span class="label">Setor: <span class="text"><%= bed.unit %></span></span>
                         </div>
                     <% } %>
                 <% }); %>
-                    -->
             </div>
         </div>
     </div>
@@ -25,18 +23,16 @@
         </div>
         <div class="scroll-bed-div">
             <div class="bed-cards-div d-flex flex-column">
-                <!--
                 <% beds.forEach(function(bed) { %>
-                    <% if (bed.status=='Em Manutenção' ) { %>
+                    <% if (bed.status=='Em Manutenção') { %>
                         <div class="bed-card maintenance-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                            data-bs-target="#modal-maintenance">
+                            data-bs-target="#modal-maintenance" data-bed-id="<%= bed.id %>">
                             <span class="label">Nº Leito: <span class="text"><%= bed.number %></span></span>
                             <span class="label">Setor: <span class="text"><%= bed.unit %></span></span>
-                            <span class="label">Motivo: <span class="text"></span></span>
+                            <span class="label">Motivo: <span class="text"><%= bed.maintenance_reason %></span></span>
                         </div>
                     <% } %>
                 <% }); %>
-                -->
             </div>
         </div>
     </div>
@@ -46,18 +42,16 @@
         </div>
         <div class="scroll-bed-div">
             <div class="bed-cards-div d-flex flex-column">
-                <!--
                 <% beds.forEach(function(bed) { %>
                     <% if (bed.status=='Ocupado' ) { %>
                         <div class="bed-card occupied-bed-card d-flex flex-column" role="button" data-bs-toggle="modal"
-                            data-bs-target="#modal-occupied">
+                            data-bs-target="#modal-occupied" data-bed-id="<%= bed.id %>">
                             <span class="label">Nº Leito: <span class="text"><%= bed.number %></span></span>
                             <span class="label">Setor: <span class="text"><%= bed.unit %></span></span>
-                            <span class="label">Paciente: <span class="text"></span></span>
+                            <span class="label">Paciente: <span class="text"><%= bed.occupied_patient%></span></span>
                         </div>
                     <% } %>
                 <% }); %>
-                -->
             </div>
         </div>
     </div>
@@ -67,18 +61,18 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header available-title">
-                <span class="modal-title">Leito 123456</span>
+                <span class="modal-title"></span>
                 <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Fechar">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
             <div class="modal-body d-flex flex-column gap-2">
-                <span class="label">Status: <span class="text">Disponível</span></span>
-                <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                <span class="label">Última Limpeza: <span class="text">03/06/2025 15:34 </span></span>
+                <span class="label">Status: <span class="text text-status"></span></span>
+                <span class="label">Setor: <span class="text text-unit"></span></span>
+                <span class="label">Última Limpeza: <span class="text text-last-cleaning"></span></span>
                 <span class="label">Observações:</span>
                 <div class="observations-div">
-                    <span> Leito com aparelho X disponível</span>
+                    <span class="text text-observations"></span>
                 </div>
             </div>
         </div>
@@ -89,18 +83,18 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header maintenance-title">
-                <span class="modal-title">Leito 654321</span>
+                <span class="modal-title"></span>
                 <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Fechar">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
             <div class="modal-body d-flex flex-column gap-2">
-                <span class="label">Status: <span class="text">Em Manutenção</span></span>
-                <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                <span class="label">Última Limpeza: <span class="text">03/06/2025 15:34 </span></span>
-                <span class="label">Motivo: <span class="text">Equipamento Quebrado</span></span>
-                <span class="label">Responsável: <span class="text">Fulano de Tal</span></span>
-                <span class="label">Previsão: <span class="text">3 Dias</span></span>
+                <span class="label">Status: <span class="text text-status"></span></span>
+                <span class="label">Setor: <span class="text text-unit"></span></span>
+                <span class="label">Última Limpeza: <span class="text text-last-cleaning"></span></span>
+                <span class="label">Motivo: <span class="text text-reason"></span></span>
+                <span class="label">Responsável: <span class="text text-responsible"></span></span>
+                <span class="label">Previsão: <span class="text text-estimated"></span></span>
             </div>
         </div>
     </div>
@@ -110,20 +104,94 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header occupied-title">
-                <span class="modal-title">Leito 162435</span>
+                <span class="modal-title"></span>
                 <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Fechar">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
             <div class="modal-body d-flex flex-column gap-2">
-                <span class="label">Status: <span class="text">Ocupado</span></span>
-                <span class="label">Setor: <span class="text">Enfermaria</span></span>
-                <span class="label">Última Limpeza: <span class="text">03/06/2025 15:34 </span></span>
-                <span class="label">Paciente: <span class="text">Ciclano da Silva</span></span>
-                <span class="label">Tempo de Ocupação: <span class="text">4 Dias</span></span>
-                <span class="label">Motivo da Internação: <span class="text">Pneumonia</span></span>
-                <span class="label">Gravidade: <span class="text modal-estable">Estável</span></span>
+                <span class="label">Status: <span class="text text-status"></span></span>
+                <span class="label">Setor: <span class="text text-unit"></span></span>
+                <span class="label">Última Limpeza: <span class="text text-last-cleaning"></span></span>
+                <span class="label">Paciente: <span class="text text-patient"></span></span>
+                <span class="label">Tempo de Ocupação: <span class="text text-time"></span></span>
+                <span class="label">Motivo da Internação: <span class="text text-hospitalization"></span></span>
+                <span class="label">Gravidade: <span class="text text-gravity"></span></span>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+  const beds = <%- JSON.stringify(beds) %>;
+
+function formatDateTime(dateTimeStr) {
+  const date = new Date(dateTimeStr);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  const hour = String(date.getHours()).padStart(2, '0');
+  const min = String(date.getMinutes()).padStart(2, '0');
+  return `${day}/${month}/${year} ${hour}:${min}`;
+}
+
+  function fillModal(type, bedId) {
+    const bed = beds.find(b => b.id === bedId);
+    if (!bed) return;
+
+    document.querySelector('#modal-occupied .text-gravity').classList.remove('modal-estable', 'modal-moderate', 'modal-critic');
+
+    if (type === 'available') {
+      document.querySelector('#modal-available .modal-title').textContent = `Leito ${bed.number}`;
+      document.querySelector('#modal-available .text-status').textContent = bed.status;
+      document.querySelector('#modal-available .text-unit').textContent = bed.unit;
+      document.querySelector('#modal-available .text-last-cleaning').textContent = formatDateTime(bed.last_cleaning);
+      document.querySelector('#modal-available .text-observations').textContent = bed.available_observations;
+    }
+    if (type === 'maintenance') {
+      document.querySelector('#modal-maintenance .modal-title').textContent = `Leito ${bed.number}`;
+      document.querySelector('#modal-maintenance .text-status').textContent = bed.status;
+      document.querySelector('#modal-maintenance .text-unit').textContent = bed.unit;
+      document.querySelector('#modal-maintenance .text-last-cleaning').textContent = formatDateTime(bed.last_cleaning);
+      document.querySelector('#modal-maintenance .text-reason').textContent = bed.maintenance_reason;
+      document.querySelector('#modal-maintenance .text-responsible').textContent = bed.maintenance_responsible;
+      document.querySelector('#modal-maintenance .text-estimated').textContent = formatDateTime(bed.maintenance_estimated_completion);
+    }
+    if (type === 'occupied') {
+      document.querySelector('#modal-occupied .modal-title').textContent = `Leito ${bed.number}`;
+      document.querySelector('#modal-occupied .text-status').textContent = bed.status;
+      document.querySelector('#modal-occupied .text-unit').textContent = bed.unit;
+      document.querySelector('#modal-occupied .text-last-cleaning').textContent = formatDateTime(bed.last_cleaning);
+      document.querySelector('#modal-occupied .text-patient').textContent = bed.occupied_patient;
+      document.querySelector('#modal-occupied .text-time').textContent = formatDateTime(bed.occupied_time);
+      document.querySelector('#modal-occupied .text-hospitalization').textContent = bed.occupied_reason;
+      document.querySelector('#modal-occupied .text-gravity').textContent = bed.occupied_gravity;
+      
+      if(bed.occupied_gravity == 'Estável'){
+        document.querySelector('#modal-occupied .text-gravity').classList.add('modal-estable');
+      }else if(bed.occupied_gravity == 'Moderado'){
+        document.querySelector('#modal-occupied .text-gravity').classList.add('modal-moderate');
+      }else{
+        document.querySelector('#modal-occupied .text-gravity').classList.add('modal-critic');
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.available-bed-card').forEach(card => {
+      card.addEventListener('click', function() {
+        fillModal('available', Number(card.dataset.bedId));
+      });
+    });
+    document.querySelectorAll('.maintenance-bed-card').forEach(card => {
+      card.addEventListener('click', function() {
+        fillModal('maintenance', Number(card.dataset.bedId));
+      });
+    });
+    document.querySelectorAll('.occupied-bed-card').forEach(card => {
+      card.addEventListener('click', function() {
+        fillModal('occupied', Number(card.dataset.bedId));
+      });
+    });
+  });
+</script>
