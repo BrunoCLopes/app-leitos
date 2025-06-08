@@ -5,7 +5,7 @@ Este sistema tem como objetivo auxiliar na gestão dos leitos hospitalares. A ap
 - HTML/CSS
 - Node.js
 - Express
-- (COLOCAR BANCO DE DADOS)
+- MySQL
 - Nodemon (em ambiente de desenvolvimento)
 
 ## 📦 Instalação
