@@ -5,6 +5,11 @@ const {
   Employee,
   Bed,
   sequelize,
+  Bed_status,
+  Bed_unit,
+  Occupied_bed,
+  Available_bed,
+  Maintenance_bed,
 } = require("../models");
 
 (async () => {
@@ -17,14 +22,19 @@ const {
     await Role.destroy({ where: {} });
     await Situation.destroy({ where: {} });
     await Speciality.destroy({ where: {} });
+    await Bed_status.destroy({ where: {} });
+    await Bed_unit.destroy({ where: {} });
+    await Available_bed.destroy({ where: {} });
+    await Maintenance_bed.destroy({ where: {} });
+    await Occupied_bed.destroy({ where: {} });
     console.log("Tabelas limpas!");
 
     const roles = await Role.bulkCreate([
       { name: "Médico" },
       { name: "Enfermeiro" },
       { name: "Técnico de Enfermagem" },
-      { name: "Administrador" },
-      { name: "Recepcionista" },
+      { name: "Enfermeiro" },
+      { name: "Técnico de Enfermagem" },
     ]);
     console.log("Tabela Role populada!");
 
@@ -45,14 +55,82 @@ const {
     ]);
     console.log("Tabela Speciality populada!");
 
+    const bed_status = await Bed_status.bulkCreate([
+      { name: "Disponível" },
+      { name: "Ocupado" },
+      { name: "Em Manutenção" },
+    ]);
+    console.log("Tabela Bed_status populada!");
+
+    const bed_units = await Bed_unit.bulkCreate([
+      { name: "Ala Norte" },
+      { name: "Ala Sul" },
+      { name: "UTI Adulto" },
+      { name: "UTI Pediátrica" },
+    ]);
+    console.log("Tabela Bed_unit populada!");
+
     const beds = await Bed.bulkCreate([
-      { number: 101, last_cleaning: "2025-01-15 10:30:00", unit: 1, status: "Disponível", observation: "Leito equipado com monitor multiparamétrico."},
-      { number: 102, last_cleaning: "2025-03-22 14:45:00", unit: 1, status: "Disponível", observation: "Disponível ponto de oxigênio e aspiração na cabeceira."},
-      { number: 201, last_cleaning: "2025-05-10 08:20:00", unit: 2, status: "Ocupado" },
-      { number: 202, last_cleaning: "2025-07-18 16:50:00", unit: 2, status: "Ocupado" },
-      { number: 301, last_cleaning: "2025-11-05 12:15:00", unit: 3, status: "Em Manutenção"},
+      { number: 101, last_cleaning: "2025-05-15 08:12:00", status_fk: bed_status[0].id, unit_fk: bed_units[0].id },
+      { number: 102, last_cleaning: "2025-05-22 17:43:00", status_fk: bed_status[0].id, unit_fk: bed_units[0].id },
+      { number: 201, last_cleaning: "2025-05-10 03:27:00", status_fk: bed_status[0].id, unit_fk: bed_units[1].id },
+      { number: 202, last_cleaning: "2025-06-05 21:55:00", status_fk: bed_status[2].id, unit_fk: bed_units[1].id },
+      { number: 301, last_cleaning: "2025-06-07 12:15:00", status_fk: bed_status[1].id, unit_fk: bed_units[2].id },
+      { number: 302, last_cleaning: "2025-05-02 23:41:00", status_fk: bed_status[1].id, unit_fk: bed_units[2].id },
+      { number: 401, last_cleaning: "2025-05-07 06:09:00", status_fk: bed_status[1].id, unit_fk: bed_units[3].id },
+      { number: 402, last_cleaning: "2025-05-30 15:38:00", status_fk: bed_status[1].id, unit_fk: bed_units[3].id },
     ]);
     console.log("Tabela Bed populada!");
+
+    await Available_bed.bulkCreate([
+      { id_bed: beds[0].id, observations: "Leito próximo à janela, com boa iluminação natural durante o dia." },
+      { id_bed: beds[1].id, observations: "Equipamento de monitoramento cardíaco recém-instalado neste leito, ideal para pacientes cardíacos." },
+      { id_bed: beds[2].id }
+    ]);
+    console.log("Tabela Available_bed populada!");
+
+
+    await Maintenance_bed.bulkCreate([
+      {
+        id_bed: beds[3].id,
+        reason: "Reparo no painel elétrico do leito devido a falha detectada durante inspeção. O leito ficará indisponível até a conclusão do serviço.",
+        estimated_completion: "2025-06-12 16:00:00",
+        responsible: "Marcos Pereira"
+      }
+    ]);
+    console.log("Tabela Maintenance_bed populada!");
+
+    await Occupied_bed.bulkCreate([
+      {
+        id_bed: beds[4].id,
+        patient: "José Almeida",
+        time_occupied: "2025-06-01 09:00:00",
+        hospitalization_reason: "Pneumonia grave, paciente necessita de monitoramento constante.",
+        gravity: "Crítico"
+      },
+      {
+        id_bed: beds[5].id,
+        patient: "Luciana Costa",
+        time_occupied: "2025-06-02 15:30:00",
+        hospitalization_reason: "Recuperação pós-cirúrgica de apendicite.",
+        gravity: "Estável"
+      },
+      {
+        id_bed: beds[6].id,
+        patient: "Carlos Lima",
+        time_occupied: "2025-06-03 11:20:00",
+        hospitalization_reason: "Acidente de trânsito, múltiplas fraturas.",
+        gravity: "Moderado"
+      },
+      {
+        id_bed: beds[7].id,
+        patient: "Fernanda Souza",
+        time_occupied: "2025-06-04 18:45:00",
+        hospitalization_reason: "Crise asmática aguda, em observação.",
+        gravity: "Moderado"
+      }
+    ]);
+    console.log("Tabela Occupied_bed populada!");
 
     await Employee.bulkCreate([
       {
