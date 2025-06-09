@@ -30,6 +30,7 @@ const Available_bed = require("./Available_bed.model")(sequelize, DataTypes);
 const Bed_status = require("./Bed_status.model")(sequelize, DataTypes);
 const Bed_unit = require("./Bed_unit.model")(sequelize, DataTypes);
 const Maintenance_bed = require("./Maintenance_bed.model")(sequelize, DataTypes);
+const Request = require("./Request.model")(sequelize, DataTypes);
 
 Employee.belongsTo(Role, { foreignKey: "role_fk" });
 Employee.belongsTo(Situation, { foreignKey: "situation_fk" });
@@ -63,5 +64,6 @@ module.exports = {
   Maintenance_bed,
   Available_bed,
   Bed_status,
-  Bed_unit
+  Bed_unit,
+  Request,
 };

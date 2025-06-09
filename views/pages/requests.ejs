@@ -18,74 +18,45 @@
 </div>
 <h2 class="requests-list d-flex">Lista de Solicitações</h2>
 <div class="requests-div d-flex">
-    <div class="requests-background d-flex flex-column">
-        <div class="request request-medicate-patient d-flex flex-column">
-            <div class="request-summary d-flex flex-row">
-                <span class="type-label label">Tipo: <span class="text">Medicar Paciente</span></span>
-                <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
-                <span class="bed-label label">Leito: <span class="text">123</span></span>
-                <div class="edit-delete-div d-flex flex-row">
-                    <span data-bs-toggle="modal" data-bs-target="#modal-edit-request"
-                        class="edit-icon material-symbols-outlined">edit</span>
-                    <span data-bs-toggle="modal" data-bs-target="#modal-delete-request" class="delete-icon material-symbols-outlined">delete</span>
+    <div id="request-background" class="requests-background d-flex flex-column">
+        <% requests.forEach(function(request) { %>
+            <div class="request
+            <% if(request.type == 'Manutenção') {%> request-maintenance <%}
+            else if(request.type == 'Limpeza') {%> request-cleaning <%}
+            else if(request.type == 'Transferência de Paciente') {%> request-patient-transfer <%}
+            else if(request.type == 'Medicar Paciente') {%> request-medicate-patient <%} %>
+            d-flex flex-column">
+                <div class="request-summary d-flex flex-row">
+                    <span class="type-label label">Tipo: <span class="text">
+                            <%= request.type %>
+                        </span></span>
+                    <span class="professional-label label">Profissional: <span class="text">
+                            <%= request.professional %>
+                        </span></span>
+                    <span class="bed-label label">Leito: <span class="text">
+                            <%= request.bed_number %>
+                        </span></span>
+                    <div class="edit-delete-div d-flex flex-row">
+                        <span data-bs-toggle="modal" data-bs-target="#modal-edit-request"
+                            class="edit-icon material-symbols-outlined">edit</span>
+                        <span data-bs-toggle="modal" data-bs-target="#modal-delete-request"
+                            class="delete-icon material-symbols-outlined">delete</span>
+                    </div>
+                </div>
+                <div class="request-details d-flex">
+                    <span class="observations-label label">Observações: <span class="text">
+                            <%= request.observations %>
+                        </span></span>
                 </div>
             </div>
-            <div class="request-details d-flex">
-                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para
-                        ingerir medicamentos grandes.</span></span>
-            </div>
-        </div>
-        <div class="request request-maintenance d-flex flex-column">
-            <div class="request-summary d-flex flex-row">
-                <span class="type-label label">Tipo: <span class="text">Medicar Paciente</span></span>
-                <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
-                <span class="bed-label label">Leito: <span class="text">123</span></span>
-                <div class="edit-delete-div d-flex flex-row">
-                    <span onclick=editRequest() class="edit-icon material-symbols-outlined">edit</span>
-                    <span onclick=deleteRequest() class="delete-icon material-symbols-outlined">delete</span>
-                </div>
-            </div>
-            <div class="request-details d-flex">
-                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para
-                        ingerir medicamentos grandes.</span></span>
-            </div>
-        </div>
-        <div class="request request-cleaning d-flex flex-column">
-            <div class="request-summary d-flex flex-row">
-                <span class="type-label label">Tipo: <span class="text">Medicar Paciente</span></span>
-                <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
-                <span class="bed-label label">Leito: <span class="text">123</span></span>
-                <div class="edit-delete-div d-flex flex-row">
-                    <span class="edit-icon material-symbols-outlined">edit</span>
-                    <span onclick=deleteRequest() class="delete-icon material-symbols-outlined">delete</span>
-                </div>
-            </div>
-            <div class="request-details d-flex">
-                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para
-                        ingerir medicamentos grandes.</span></span>
-            </div>
-        </div>
-        <div class="request request-patient-transfer d-flex flex-column">
-            <div class="request-summary d-flex flex-row">
-                <span class="type-label label">Tipo: <span class="text">Medicar Paciente</span></span>
-                <span class="professional-label label">Profissional: <span class="text">Fulano da Silva</span></span>
-                <span class="bed-label label">Leito: <span class="text">123</span></span>
-                <div class="edit-delete-div d-flex flex-row">
-                    <span class="edit-icon material-symbols-outlined">edit</span>
-                    <span class="delete-icon material-symbols-outlined">delete</span>
-                </div>
-            </div>
-            <div class="request-details d-flex">
-                <span class="observations-label label">Observações: <span class="text">Paciente com dificuldade para
-                        ingerir medicamentos grandes.</span></span>
-            </div>
-        </div>
+            <% }); %>
     </div>
 </div>
 <div class="new-request-button-div d-flex">
     <button data-bs-toggle="modal" data-bs-target="#modal-new-request" class="new-request-button d-flex">
         <h3>Nova Solicitação</h3>
     </button>
+</div>
 </div>
 
 <div class="modal fade" id="modal-new-request" tabindex="-1">
@@ -98,31 +69,34 @@
                 </button>
             </div>
             <div class="new-request-body modal-body d-flex flex-column gap-2">
-                <span class="label">Tipo
-                    <select required class="type-select" name="" id="type-select">
-                        <option value="">Selecione</option>
-                        <option value="maintenance">Manutenção</option>
-                        <option value="cleaning">Limpeza</option>
-                        <option value="patient-transfer">Transferência de Paciente</option>
-                        <option value="medicate-patient">Medicar Paciente</option>
-                    </select></span>
-                <span class="label">Leito: <input required class="bed-input" id="bed-input" type="number"></span>
-                <span class="label d-flex flex-column">Profissional
-                    <select required class="professional-select" name="" id="professional-select">
-                        <option value="">Selecione</option>
-                        <option value="1">Fulano da Silva</option>
-                        <option value="2">Ciclano Pereira</option>
-                        <option value="3">Beltrano Costa e Silva Junior de Tal</option>
-                        <option value="4">Fulano Antônio dos Santos da Silva</option>
-                    </select>
-                </span>
-                <span class="label">Observações:</span>
-                <textarea class="observations-text-area" name="" id="observations-text-area"></textarea>
-                <div class="modal-buttons-div d-flex flex-row gap-3">
-                    <button onclick="clearButton('modal-new-request')"
-                        class="clean-button new-request-button">Limpar</button>
-                    <button class="confirm-button new-request-button">Confirmar</button>
-                </div>
+                <form id="new-request-form">
+                    <span class="label">Tipo
+                        <select required class="type-select" name="" id="type-new-select">
+                            <option value="">Selecione</option>
+                            <option value="maintenance">Manutenção</option>
+                            <option value="cleaning">Limpeza</option>
+                            <option value="patient-transfer">Transferência de Paciente</option>
+                            <option value="medicate-patient">Medicar Paciente</option>
+                        </select></span>
+                    <span class="label">Leito: <input required class="bed-input" id="bed-new-input"
+                            type="number"></span>
+                    <span class="label d-flex flex-column">Profissional
+                        <select required class="professional-select" name="" id="professional-new-select">
+                            <option value="">Selecione</option>
+                            <option value="1">Fulano da Silva</option>
+                            <option value="2">Ciclano Pereira</option>
+                            <option value="3">Beltrano Costa e Silva Junior de Tal</option>
+                            <option value="4">Fulano Antônio dos Santos da Silva</option>
+                        </select>
+                    </span>
+                    <span class="label">Observações:</span>
+                    <textarea class="observations-text-area" name="" id="observations-new-text"></textarea>
+                    <div class="modal-buttons-div d-flex flex-row gap-3">
+                        <button type="button" onclick="clearButton('modal-new-request')"
+                            class="clean-button new-request-button">Limpar</button>
+                        <button type="submit" class="confirm-button new-request-button">Confirmar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -138,31 +112,35 @@
                 </button>
             </div>
             <div class="modal-body d-flex flex-column gap-2">
-                <span class="label">Tipo
-                    <select required class="type-select" name="" id="type-select">
-                        <option value="">Selecione</option>
-                        <option value="maintenance">Manutenção</option>
-                        <option value="cleaning">Limpeza</option>
-                        <option value="patient-transfer">Transferência de Paciente</option>
-                        <option value="medicate-patient">Medicar Paciente</option>
-                    </select></span>
-                <span class="label">Leito: <input required class="bed-input" id="bed-input" type="number"></span>
-                <span class="label d-flex flex-column">Profissional
-                    <select required class="professional-select" name="" id="professional-select">
-                        <option value="">Selecione</option>
-                        <option value="1">Fulano da Silva</option>
-                        <option value="2">Ciclano Pereira</option>
-                        <option value="3">Beltrano Costa e Silva Junior de Tal</option>
-                        <option value="4">Fulano Antônio dos Santos da Silva</option>
-                    </select>
-                </span>
-                <span class="label">Observações:</span>
-                <textarea class="observations-text-area" name="" id="observations-text-area"></textarea>
-                <div class="modal-buttons-div d-flex flex-row gap-3">
-                    <button onclick="clearButton('modal-edit-request')"
-                        class="clean-button edit-request-button">Limpar</button>
-                    <button class="confirm-button edit-request-button">Confirmar</button>
-                </div>
+                <form id="edit-request-form">
+                    <span class="label">Tipo
+                        <select required class="type-select" name="" id="type-edit-select">
+                            <option value="">Selecione</option>
+                            <option value="maintenance">Manutenção</option>
+                            <option value="cleaning">Limpeza</option>
+                            <option value="patient-transfer">Transferência de Paciente</option>
+                            <option value="medicate-patient">Medicar Paciente</option>
+                        </select>
+                    </span>
+                    <span class="label">Leito: <input required class="bed-input" id="bed-edit-input"
+                            type="number"></span>
+                    <span class="label d-flex flex-column">Profissional
+                        <select required class="professional-select" name="" id="professional-edit-select">
+                            <option value="">Selecione</option>
+                            <option value="1">Fulano da Silva</option>
+                            <option value="2">Ciclano Pereira</option>
+                            <option value="3">Beltrano Costa e Silva Junior de Tal</option>
+                            <option value="4">Fulano Antônio dos Santos da Silva</option>
+                        </select>
+                    </span>
+                    <span class="label">Observações:</span>
+                    <textarea class="observations-text-area" name="" id="observations-edit-text"></textarea>
+                    <div class="modal-buttons-div d-flex flex-row gap-3">
+                        <button type="button" onclick="clearButton('modal-edit-request')"
+                            class="clean-button edit-request-button">Limpar</button>
+                        <button type="submit" class="confirm-button edit-request-button">Confirmar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -175,10 +153,12 @@
                 <span class="modal-title mt-4">Tem certeza que deseja excluir essa solicitação</span>
             </div>
             <div class="modal-body d-flex flex-column gap-2">
-                <div class="modal-buttons-div d-flex flex-row gap-3">
-                    <button data-bs-dismiss="modal" class="no-button btn-modal-close">Não</button>
-                    <button class="yes-button">Sim</button>
-                </div>
+                <form action="delete-request-form">
+                    <div class="modal-buttons-div d-flex flex-row gap-3">
+                        <button data-bs-dismiss="modal" class="no-button btn-modal-close">Não</button>
+                        <button class="yes-button">Sim</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -194,4 +174,34 @@
             element.value = "";
         });
     }
+
+    document.getElementById('new-request-form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const type_selected = document.getElementById('type-new-select');
+        const type = type_selected.options[type_selected.selectedIndex].text;
+        const bed_number = document.getElementById('bed-new-input').value;
+        const professional_selected = document.getElementById('professional-new-select');
+        const professional = professional_selected.options[professional_selected.selectedIndex].text;
+        const observations = document.getElementById('observations-new-text').value;
+
+        try {
+            await fetch('/requests', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: type,
+                    bed_number: bed_number,
+                    professional: professional,
+                    observations: observations
+                }),
+            });
+            console.log('Solicitação enviada com sucesso!');
+
+            bootstrap.Modal.getInstance(document.getElementById('modal-new-request')).hide();
+            window.location.reload();
+        } catch (error) {
+            console.log('Erro ao enviar a solicitação:', error);
+        }
+    });
 </script>

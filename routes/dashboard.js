@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const fs = require('fs');
-const path = require('path');
 
-const {Bed, Bed_status, Bed_unit, Available_bed, Maintenance_bed, Occupied_bed} = require('../models/index');
+const {Bed, Bed_status} = require('../models/index');
 
 router.get('/', async function (req, res, next) {
 
