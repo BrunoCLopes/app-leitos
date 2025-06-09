@@ -15,8 +15,7 @@ logs/
 .DS_Store
 Thumbs.db
 
-# Environment
-# .env
+# Environment.env
 .env.test
 .env.*
 
