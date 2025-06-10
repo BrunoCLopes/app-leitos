@@ -38,9 +38,9 @@
                         </span></span>
                     <div class="edit-delete-div d-flex flex-row">
                         <span data-bs-toggle="modal" data-bs-target="#modal-edit-request"
-                            class="edit-icon material-symbols-outlined">edit</span>
+                            class="edit-icon material-symbols-outlined" data-request-id="<%= request.id %>">edit</span>
                         <span data-bs-toggle="modal" data-bs-target="#modal-delete-request"
-                            class="delete-icon material-symbols-outlined">delete</span>
+                            class="delete-icon material-symbols-outlined" data-request-id="<%= request.id %>">delete</span>
                     </div>
                 </div>
                 <div class="request-details d-flex">
@@ -69,28 +69,31 @@
                 </button>
             </div>
             <div class="new-request-body modal-body d-flex flex-column gap-2">
-                <form id="new-request-form">
+                <form action="/requests/create" method="POST" id="new-request-form">
                     <span class="label">Tipo
-                        <select required class="type-select" name="" id="type-new-select">
+                        <select required class="type-select" name="type" id="type-new-select">
                             <option value="">Selecione</option>
-                            <option value="maintenance">Manutenção</option>
-                            <option value="cleaning">Limpeza</option>
-                            <option value="patient-transfer">Transferência de Paciente</option>
-                            <option value="medicate-patient">Medicar Paciente</option>
+                            <option value="Manutenção">Manutenção</option>
+                            <option value="Limpeza">Limpeza</option>
+                            <option value="Transferência de Paciente">Transferência de Paciente</option>
+                            <option value="Medicar Paciente">Medicar Paciente</option>
                         </select></span>
-                    <span class="label">Leito: <input required class="bed-input" id="bed-new-input"
-                            type="number"></span>
+                    <div class="d-flex flex-row gap-1 align-items-center">
+                        <span class="label">Leito: <input required class="bed-input" name="bed_number" id="bed-new-input"
+                                type="number"></span>
+                    </div>
                     <span class="label d-flex flex-column">Profissional
-                        <select required class="professional-select" name="" id="professional-new-select">
+                        <select required class="professional-select" name="professional" id="professional-new-select">
                             <option value="">Selecione</option>
-                            <option value="1">Fulano da Silva</option>
-                            <option value="2">Ciclano Pereira</option>
-                            <option value="3">Beltrano Costa e Silva Junior de Tal</option>
-                            <option value="4">Fulano Antônio dos Santos da Silva</option>
+                            <% employees.forEach(function(employee) { %>
+                                <option value="<%= employee.name %>">
+                                    <%= employee.name %>
+                                </option>
+                                <% }); %>
                         </select>
                     </span>
                     <span class="label">Observações:</span>
-                    <textarea class="observations-text-area" name="" id="observations-new-text"></textarea>
+                    <textarea class="observations-text-area" name="observations" id="observations-new-text"></textarea>
                     <div class="modal-buttons-div d-flex flex-row gap-3">
                         <button type="button" onclick="clearButton('modal-new-request')"
                             class="clean-button new-request-button">Limpar</button>
@@ -112,29 +115,33 @@
                 </button>
             </div>
             <div class="modal-body d-flex flex-column gap-2">
-                <form id="edit-request-form">
+                <form action="/requests/update" method="POST" id="edit-request-form">
+                    <input type="hidden" name="id" id="edit-request-id">
                     <span class="label">Tipo
-                        <select required class="type-select" name="" id="type-edit-select">
+                        <select required class="type-select" name="type" id="type-edit-select">
                             <option value="">Selecione</option>
-                            <option value="maintenance">Manutenção</option>
-                            <option value="cleaning">Limpeza</option>
-                            <option value="patient-transfer">Transferência de Paciente</option>
-                            <option value="medicate-patient">Medicar Paciente</option>
+                            <option value="Manutenção">Manutenção</option>
+                            <option value="Limpeza">Limpeza</option>
+                            <option value="Transferência de Paciente">Transferência de Paciente</option>
+                            <option value="Medicar Paciente">Medicar Paciente</option>
                         </select>
                     </span>
-                    <span class="label">Leito: <input required class="bed-input" id="bed-edit-input"
-                            type="number"></span>
+                    <div class="d-flex flex-row gap-1 align-items-center">
+                        <span class="label">Leito: <input required class="bed-input" name="bed_number" id="bed-edit-input"
+                                type="number"></span>
+                    </div>
                     <span class="label d-flex flex-column">Profissional
-                        <select required class="professional-select" name="" id="professional-edit-select">
+                        <select required class="professional-select" name="professional" id="professional-edit-select">
                             <option value="">Selecione</option>
-                            <option value="1">Fulano da Silva</option>
-                            <option value="2">Ciclano Pereira</option>
-                            <option value="3">Beltrano Costa e Silva Junior de Tal</option>
-                            <option value="4">Fulano Antônio dos Santos da Silva</option>
+                            <% employees.forEach(function(employee) { %>
+                                <option value="<%= employee.name %>">
+                                    <%= employee.name %>
+                                </option>
+                                <% }); %>
                         </select>
                     </span>
                     <span class="label">Observações:</span>
-                    <textarea class="observations-text-area" name="" id="observations-edit-text"></textarea>
+                    <textarea class="observations-text-area" name="observations" id="observations-edit-text"></textarea>
                     <div class="modal-buttons-div d-flex flex-row gap-3">
                         <button type="button" onclick="clearButton('modal-edit-request')"
                             class="clean-button edit-request-button">Limpar</button>
@@ -153,10 +160,11 @@
                 <span class="modal-title mt-4">Tem certeza que deseja excluir essa solicitação</span>
             </div>
             <div class="modal-body d-flex flex-column gap-2">
-                <form action="delete-request-form">
+                <form action="/requests/delete" method="POST" id="delete-request-form">
+                    <input type="hidden" name="id" id="delete-request-id">
                     <div class="modal-buttons-div d-flex flex-row gap-3">
-                        <button data-bs-dismiss="modal" class="no-button btn-modal-close">Não</button>
-                        <button class="yes-button">Sim</button>
+                        <button type="button" data-bs-dismiss="modal" class="no-button btn-modal-close">Não</button>
+                        <button type="submit" class="yes-button">Sim</button>
                     </div>
                 </form>
             </div>
@@ -166,6 +174,8 @@
 
 
 <script>
+    const requests = <%- JSON.stringify(requests) %>;
+
     function clearButton(modal) {
         const modalElements = document.getElementById(modal);
         const elements = modalElements.querySelectorAll('select, input, textarea');
@@ -175,33 +185,28 @@
         });
     }
 
-    document.getElementById('new-request-form').addEventListener('submit', async function (event) {
-        event.preventDefault();
+    function fillEditModal(requestId) {
+        const request = requests.find(r => r.id === requestId);
+        if (!request) return;
 
-        const type_selected = document.getElementById('type-new-select');
-        const type = type_selected.options[type_selected.selectedIndex].text;
-        const bed_number = document.getElementById('bed-new-input').value;
-        const professional_selected = document.getElementById('professional-new-select');
-        const professional = professional_selected.options[professional_selected.selectedIndex].text;
-        const observations = document.getElementById('observations-new-text').value;
+        document.getElementById('edit-request-id').value = requestId;
+        document.getElementById('type-edit-select').value = request.type;
+        document.getElementById('bed-edit-input').value = request.bed_number;
+        document.getElementById('professional-edit-select').value = request.professional;
+        document.getElementById('observations-edit-text').value = request.observations;
+    }
 
-        try {
-            await fetch('/requests', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    type: type,
-                    bed_number: bed_number,
-                    professional: professional,
-                    observations: observations
-                }),
-            });
-            console.log('Solicitação enviada com sucesso!');
+    document.querySelectorAll('.edit-icon').forEach(icon => {
+        icon.addEventListener('click', function () {
+            const requestId = parseInt(this.getAttribute('data-request-id'));
+            fillEditModal(requestId);
+        });
+    });
 
-            bootstrap.Modal.getInstance(document.getElementById('modal-new-request')).hide();
-            window.location.reload();
-        } catch (error) {
-            console.log('Erro ao enviar a solicitação:', error);
-        }
+    document.querySelectorAll('.delete-icon').forEach(icon => {
+        icon.addEventListener('click', function () {
+            const requestId = parseInt(this.getAttribute('data-request-id'));
+            document.getElementById('delete-request-id').value = requestId;
+        });
     });
 </script>
