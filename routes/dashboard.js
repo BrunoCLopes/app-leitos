@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const sequelize = require('sequelize');
 
-const { Bed, Bed_status, Bed_unit, Available_bed, Maintenance_bed, Occupied_bed } = require('../models/index');
+const { Bed, Bed_status, Bed_unit, Available_bed, Maintenance_bed, Occupied_bed, Request } = require('../models/index');
 
 router.get('/', async function (req, res, next) {
   try {
@@ -42,16 +42,17 @@ router.get('/', async function (req, res, next) {
       occupied: acc.occupied + curr.occupied
     }), { total: 0, available: 0, maintenance: 0, occupied: 0 });
 
-    // Mock de solicitações (você pode substituir por dados reais do banco depois)
-    const requests = [
-      { responsavel: 'Fulano da Silva', tipo: 'medicar', tipoLabel: 'Medicar Paciente', leito: '1' },
-      { responsavel: 'Fulano da Silva', tipo: 'limpeza', tipoLabel: 'Limpeza', leito: '1' },
-      { responsavel: 'Fulano da Silva', tipo: 'manutencao', tipoLabel: 'Manutenção', leito: '1' },
-      { responsavel: 'Fulano da Silva', tipo: 'limpeza', tipoLabel: 'Limpeza', leito: '1' },
-      { responsavel: 'Fulano da Silva', tipo: 'limpeza', tipoLabel: 'Limpeza', leito: '1' },
-      { responsavel: 'Fulano da Silva', tipo: 'limpeza', tipoLabel: 'Limpeza', leito: '1' },
-      { responsavel: 'Fulano da Silva', tipo: 'limpeza', tipoLabel: 'Limpeza', leito: '1' },
-    ];
+    const requestsFromDb = await Request.findAll({ order: [['id', 'DESC']], limit: 7 });
+    const requests = requestsFromDb.map(request => ({
+      responsavel: request.professional,
+      tipo: request.type === 'Manutenção' ? 'manutencao'
+          : request.type === 'Limpeza' ? 'limpeza'
+          : request.type === 'Medicar Paciente' ? 'medicar'
+          : request.type === 'Transferência de Paciente' ? 'transferencia'
+          : 'outro',
+      tipoLabel: request.type,
+      leito: request.bed_number
+    }));
 
     // Prepara dados para o gráfico
     const graphData = {

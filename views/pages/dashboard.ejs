@@ -20,25 +20,21 @@
 
 <div class="requests-graphic-div d-flex flex-row">
     <div class="requests">
-        <h2>Solicitações</h2>
+        <h2>Últimas Solicitações</h2>
         <div class="requests-list">
-            <% if (requests && requests.length > 0) { %>
-                <% requests.forEach(function(req) { %>
-                    <div class="request-card <%= req.tipo %>">
-                        <div>
-                            <span><b>Responsável:</b> <%= req.responsavel %></span>
-                        </div>
-                        <div>
-                            <span><b>Tipo:</b> <%= req.tipoLabel %></span>
-                        </div>
-                        <div>
-                            <span><b>Leito:</b> <%= req.leito %></span>
-                        </div>
+            <% requests.forEach(function(request) { %>
+                <div class="request-card <%= request.tipo %>">
+                    <div>
+                        <span><b>Responsável:</b> <%= request.responsavel %></span>
                     </div>
-                <% }) %>
-            <% } else { %>
-                <div style="text-align:center;">Nenhuma solicitação encontrada.</div>
-            <% } %>
+                    <div>
+                        <span><b>Tipo:</b> <%= request.tipoLabel %></span>
+                    </div>
+                    <div>
+                        <span><b>Leito:</b> <%= request.leito %></span>
+                    </div>
+                </div>
+            <% }); %>
         </div>
     </div>
 

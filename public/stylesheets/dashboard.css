@@ -32,34 +32,33 @@
 }
 
 .requests-graphic-div {
-    justify-content: center; /* Alterado para center */
-    gap: 40px; /* Aumentado para dar mais espaço entre os elementos */
+    justify-content: center; 
+    gap: 40px; 
     display: flex;
     flex-direction: row;
-    padding: 0 20px;
-    margin-top: 30px;
-    height: calc(100vh - 250px); /* Ajusta altura considerando o header e cards */
+    padding: 0 5px;
+    margin-top: 5px;
+    height: 40rem;
 }
 
-/* Remove a estilização genérica que estava afetando todos os divs */
+
 .requests-graphic-div > div {
     border-radius: 15px;
     margin: 10px 0;
 }
 
 .requests {
-    background: #f5f5f5;
+    background-color: rgb(238, 238, 238, 0.5);
     padding: 0;
     border-radius: 18px;
-    width: 30%; /* Reduzido de 35% para 30% */
-    min-width: 350px; /* Reduzido de 400px para 350px */
-    height: 100%;
+    width: 30%;
+    min-width: 350px; 
+    height: 37rem;
     position: relative;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .requests h2 {
-    text-align: center; /* Alterado para center */
+    text-align: center;
     padding: 15px;
     margin: 0;
     font-size: 20px;
@@ -76,12 +75,13 @@
 .requests > div:not(h2) {
     padding: 18px;
     overflow-y: auto;
+    scrollbar-width: none; 
 }
 
 .requests-list {
     padding: 15px;
     overflow-y: auto;
-    height: calc(100% - 65px); /* Altura total menos altura do título */
+    height: calc(100% - 65px); 
 }
 
 .request-card {
@@ -106,25 +106,28 @@
 }
 
 .request-card.medicar {
-    background-color: #7fdbda;
+    background-color: rgb(0, 151, 167, 0.6);
 }
 
 .request-card.limpeza {
-    background-color: #c5b7e5;
+    background-color: rgb(126, 87, 194, 0.6);
 }
 
 .request-card.manutencao {
-    background-color: #ffba7b;
+    background-color: rgb(245, 124, 0, 0.6);
+}
+
+.request-card.transferencia {
+    background-color: rgb(139, 195, 74, 0.6);
 }
 
 .graphic {
     background-color: #ffffff;
     border-radius: 18px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     padding: 25px;
-    width: 55%; /* Reduzido de 65% para 55% */
-    max-width: 800px; /* Adicionado um tamanho máximo */
-    height: 100%;
+    width: 55%;
+    max-width: 800px; 
+    height: 40rem;
     display: flex;
     align-items: center;
 }
