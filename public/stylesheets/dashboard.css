@@ -1,9 +1,9 @@
-.cards-div{
+.cards-div {
     justify-content: center;
     gap: 20px;
 }
 
-.cards-div div{
+.cards-div div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,34 +15,116 @@
     border-radius: 15px;
 }
 
-.total-card{
-    background-color: #2A7DC0;
+.total-card {
+    background-color: #2a7dc0;
 }
 
-.available-card{
-    background-color: #4CAF50;
+.available-card {
+    background-color: #4caf50;
 }
 
-.maintenance-card{
-    background-color: #E2C000;
+.maintenance-card {
+    background-color: #e2c000;
 }
 
-.occupied-card{
-    background-color: #E53935;
+.occupied-card {
+    background-color: #e53935;
 }
 
-.requests-graphic-div{
-    justify-content: center;
-    gap: 20px;
-}
-
-.requests-graphic-div div{
+.requests-graphic-div {
+    justify-content: center; /* Alterado para center */
+    gap: 40px; /* Aumentado para dar mais espaço entre os elementos */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    padding: 0 20px;
+    margin-top: 30px;
+    height: calc(100vh - 250px); /* Ajusta altura considerando o header e cards */
+}
+
+/* Remove a estilização genérica que estava afetando todos os divs */
+.requests-graphic-div > div {
     border-radius: 15px;
-    margin: 10px 0 10px 0;
-    width: 40rem;
-    height: 40rem;  
-    background-color: #EEEEEE;
+    margin: 10px 0;
+}
+
+.requests {
+    background: #f5f5f5;
+    padding: 0;
+    border-radius: 18px;
+    width: 30%; /* Reduzido de 35% para 30% */
+    min-width: 350px; /* Reduzido de 400px para 350px */
+    height: 100%;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.requests h2 {
+    text-align: center; /* Alterado para center */
+    padding: 15px;
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    background: #f5f5f5;
+    position: sticky;
+    top: 0;
+    border-radius: 18px 18px 0 0;
+    z-index: 1;
+    border-bottom: 1px solid #eee;
+}
+
+.requests > div:not(h2) {
+    padding: 18px;
+    overflow-y: auto;
+}
+
+.requests-list {
+    padding: 15px;
+    overflow-y: auto;
+    height: calc(100% - 65px); /* Altura total menos altura do título */
+}
+
+.request-card {
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.request-card > div {
+    margin-bottom: 8px;
+}
+
+.request-card span {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.request-card b {
+    font-weight: 600;
+}
+
+.request-card.medicar {
+    background-color: #7fdbda;
+}
+
+.request-card.limpeza {
+    background-color: #c5b7e5;
+}
+
+.request-card.manutencao {
+    background-color: #ffba7b;
+}
+
+.graphic {
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    width: 55%; /* Reduzido de 65% para 55% */
+    max-width: 800px; /* Adicionado um tamanho máximo */
+    height: 100%;
+    display: flex;
+    align-items: center;
 }

@@ -1,67 +1,94 @@
 var express = require('express');
 var router = express.Router();
+const fs = require('fs');
+const path = require('path');
+const sequelize = require('sequelize');
 
-const {Bed, Bed_status} = require('../models/index');
+const { Bed, Bed_status, Bed_unit, Available_bed, Maintenance_bed, Occupied_bed } = require('../models/index');
 
 router.get('/', async function (req, res, next) {
+  try {
+    // Busca dados por unidade
+    const bedsData = await Bed_unit.findAll({
+      attributes: [
+        'id',
+        'name'
+      ],
+      include: [{
+        model: Bed,
+        required: false,
+        include: [{
+          model: Bed_status,
+          attributes: ['name']
+        }]
+      }],
+      raw: false,
+      nest: true
+    });
 
-  let total_beds = 0;
-  let available_beds = 0;
-  let maintenance_beds = 0;
-  let occupied_beds = 0;
+    // Processa os dados para contar os leitos por status em cada unidade
+    const processedData = bedsData.map(unit => ({
+      name: unit.name,
+      available: unit.Beds.filter(bed => bed.Bed_status.name === 'Disponível').length,
+      maintenance: unit.Beds.filter(bed => bed.Bed_status.name === 'Em Manutenção').length,
+      occupied: unit.Beds.filter(bed => bed.Bed_status.name === 'Ocupado').length
+    }));
 
-  // Total de leitos
-  await Bed.count().then(count => {
-    console.log(`Total de leitos: ${count}`);
-    total_beds = count;
-  }).catch(err => {
-    console.error('Erro ao contar leitos:', err);
-  });
+    // Calcula os totais
+    const totals = processedData.reduce((acc, curr) => ({
+      total: acc.total + curr.available + curr.maintenance + curr.occupied,
+      available: acc.available + curr.available,
+      maintenance: acc.maintenance + curr.maintenance,
+      occupied: acc.occupied + curr.occupied
+    }), { total: 0, available: 0, maintenance: 0, occupied: 0 });
 
-  // verifica quantos leitos estão disponíveis
-  await Bed.count({
-    include: [
-      { model: Bed_status, where: { name: 'Disponível' } }
-    ]
-  }).then(count => {
-    console.log(`Total de leitos disponíveis: ${count}`);
-    available_beds = count;
-  }).catch(err => {
-    console.error('Erro ao contar leitos disponíveis:', err);
-  });
+    // Mock de solicitações (você pode substituir por dados reais do banco depois)
+    const requests = [
+      { responsavel: 'Fulano da Silva', tipo: 'medicar', tipoLabel: 'Medicar Paciente', leito: '1' },
+      { responsavel: 'Fulano da Silva', tipo: 'limpeza', tipoLabel: 'Limpeza', leito: '1' },
+      { responsavel: 'Fulano da Silva', tipo: 'manutencao', tipoLabel: 'Manutenção', leito: '1' },
+      { responsavel: 'Fulano da Silva', tipo: 'limpeza', tipoLabel: 'Limpeza', leito: '1' },
+      { responsavel: 'Fulano da Silva', tipo: 'limpeza', tipoLabel: 'Limpeza', leito: '1' },
+      { responsavel: 'Fulano da Silva', tipo: 'limpeza', tipoLabel: 'Limpeza', leito: '1' },
+      { responsavel: 'Fulano da Silva', tipo: 'limpeza', tipoLabel: 'Limpeza', leito: '1' },
+    ];
 
-  // verifica quantos leitos estão em manutenção
-  await Bed.count({
-    include: [
-      { model: Bed_status, where: { name: 'Em Manutenção' } }
-    ]
-  }).then(count => {
-    console.log(`Total de leitos em manutenção: ${count}`);
-    maintenance_beds = count;
-  }).catch(err => {
-    console.error('Erro ao contar leitos em manutenção:', err);
-  });
+    // Prepara dados para o gráfico
+    const graphData = {
+      labels: processedData.map(unit => unit.name),
+      datasets: [
+        {
+          label: 'Disponíveis',
+          data: processedData.map(unit => unit.available),
+          backgroundColor: '#4CAF50'
+        },
+        {
+          label: 'Manutenção',
+          data: processedData.map(unit => unit.maintenance),
+          backgroundColor: '#E2C000'
+        },
+        {
+          label: 'Ocupados',
+          data: processedData.map(unit => unit.occupied),
+          backgroundColor: '#E53935'
+        }
+      ]
+    };
 
-  // verifica quantos leitos estão ocupados
-  await Bed.count({
-    include: [
-      { model: Bed_status, where: { name: 'Ocupado' } }
-    ]
-  }).then(count => {
-    console.log(`Total de leitos ocupados: ${count}`);
-    occupied_beds = count;
-  }).catch(err => {
-    console.error('Erro ao contar leitos ocupados:', err);
-  });
+    res.render('pages/dashboard', {
+      title: 'Painel',
+      total_beds: totals.total,
+      available_beds: totals.available,
+      maintenance_beds: totals.maintenance,
+      occupied_beds: totals.occupied,
+      requests,
+      graphData
+    });
 
-
-  res.render('pages/dashboard', {
-    title: 'Painel',
-    total_beds: total_beds,
-    available_beds: available_beds,
-    maintenance_beds: maintenance_beds,
-    occupied_beds: occupied_beds
-  });
+  } catch (error) {
+    console.error('Erro ao carregar dados do dashboard:', error);
+    res.status(500).send('Erro ao carregar dados do dashboard');
+  }
 });
 
 
