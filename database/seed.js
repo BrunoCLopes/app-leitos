@@ -104,6 +104,8 @@ const {
       {
         id_bed: beds[4].id,
         patient: "José Almeida",
+        age_patient: 67,
+        sex_patient: "M",
         time_occupied: "2025-06-01 09:00:00",
         hospitalization_reason: "Pneumonia grave, paciente necessita de monitoramento constante.",
         gravity: "Crítico"
@@ -111,6 +113,8 @@ const {
       {
         id_bed: beds[5].id,
         patient: "Luciana Costa",
+        age_patient: 34,
+        sex_patient: "F",
         time_occupied: "2025-06-02 15:30:00",
         hospitalization_reason: "Recuperação pós-cirúrgica de apendicite.",
         gravity: "Estável"
@@ -118,6 +122,8 @@ const {
       {
         id_bed: beds[6].id,
         patient: "Carlos Lima",
+        age_patient: 41,
+        sex_patient: "M",
         time_occupied: "2025-06-03 11:20:00",
         hospitalization_reason: "Acidente de trânsito, múltiplas fraturas.",
         gravity: "Moderado"
@@ -125,6 +131,8 @@ const {
       {
         id_bed: beds[7].id,
         patient: "Fernanda Souza",
+        age_patient: 28,
+        sex_patient: "F",
         time_occupied: "2025-06-04 18:45:00",
         hospitalization_reason: "Crise asmática aguda, em observação.",
         gravity: "Moderado"

@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const fs = require('fs');
-const path = require('path');
 const { Employee, Role, Situation, Speciality } = require('../models/index');
 
 router.get('/', async function (req, res, next) {
